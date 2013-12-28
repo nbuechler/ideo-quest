@@ -101,6 +101,15 @@ padding-left: 10%;
 	$(function() {
 		$("#question26").buttonset();
 	});
+	
+	
+	
+	function sender() {
+	document.forms["form01"].submit();
+	//document.forms["form02"].submit();
+	return true;
+	}
+	
 </g:javascript>
 
 <body>
@@ -109,17 +118,17 @@ padding-left: 10%;
   </div>
   
   <div id="formholder" style="margin-right: 45%;">
-	<form name="form01">
+	<g:form name="form01" action="results" method="post">
 	  <h3>Governance of society does not require an executive authority
 </h3>
 		<div id="question01">
-			<input type="radio" id="radio001" name="radio" checked="checked"><label for="radio001">Strongly Disagree</label>
-			<input type="radio" id="radio002" name="radio"><label for="radio002">Disagree</label>
-			<input type="radio" id="radio003" name="radio"><label for="radio003">Agree</label>
-			<input type="radio" id="radio004" name="radio"><label for="radio004">Strongly Agree</label>
+			<input type="radio" id="radio001" value="1" name="radio" checked="checked"><label for="radio001">Strongly Disagree</label>
+			<input type="radio" id="radio002" value="1" name="radio"><label for="radio002">Disagree</label>
+			<input type="radio" id="radio003" value="1" name="radio"><label for="radio003">Agree</label>
+			<input type="radio" id="radio004" value="1" name="radio"><label for="radio004">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form02">
+	</g:form>
+	<g:form name="form02" method="post">
 	  <h3>No elite should interfere with self-organizing and voluntary groups, communities, and organizations
 </h3>
 		<div id="question02">
@@ -128,8 +137,8 @@ padding-left: 10%;
 			<input type="radio" id="radio007" name="radio"><label for="radio007">Agree</label>
 			<input type="radio" id="radio008" name="radio"><label for="radio008">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form03">
+	</g:form>
+	<g:form name="form03" method="post">
 	  <h3>Security is the most important societal value, and therefore other values ought to be sacrificed to preserve security
 </h3>
 		<div id="question03">
@@ -138,8 +147,8 @@ padding-left: 10%;
 			<input type="radio" id="radio011" name="radio"><label for="radio011">Agree</label>
 			<input type="radio" id="radio012" name="radio"><label for="radio012">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form04">
+	</g:form>
+	<g:form name="form04" method="post">
 	  <h3>Questioning or challenging leaders in an organization or institution should be forbidden
 </h3>
 		<div id="question04">
@@ -148,8 +157,8 @@ padding-left: 10%;
 			<input type="radio" id="radio015" name="radio"><label for="radio015">Agree</label>
 			<input type="radio" id="radio016" name="radio"><label for="radio016">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form05">
+	</g:form>
+	<g:form name="form05" method="post">
 	  <h3>Wealthy individuals should have few or no restrictions on gaining more assets
 </h3>
 		<div id="question05">
@@ -158,8 +167,8 @@ padding-left: 10%;
 			<input type="radio" id="radio019" name="radio"><label for="radio019">Agree</label>
 			<input type="radio" id="radio020" name="radio"><label for="radio020">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form06">
+	</g:form>
+	<g:form name="form06" method="post">
 	  <h3>Value should be communicated as prices arising from competition through exchange-based markets
 </h3>
 		<div id="question06">
@@ -168,8 +177,8 @@ padding-left: 10%;
 			<input type="radio" id="radio023" name="radio"><label for="radio023">Agree</label>
 			<input type="radio" id="radio024" name="radio"><label for="radio024">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form07">
+	</g:form>
+	<g:form name="form07" method="post">
 	  <h3>Traditional social organizations and institutions should be preserved
 </h3>
 		<div id="question07">
@@ -178,8 +187,8 @@ padding-left: 10%;
 			<input type="radio" id="radio027" name="radio"><label for="radio027">Agree</label>
 			<input type="radio" id="radio028" name="radio"><label for="radio028">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form08">
+	</g:form>
+	<g:form name="form08" method="post">
 	  <h3>Maintaining the status quo ensures a stable society
 </h3>
 		<div id="question08">
@@ -188,8 +197,8 @@ padding-left: 10%;
 			<input type="radio" id="radio031" name="radio"><label for="radio031">Agree</label>
 			<input type="radio" id="radio032" name="radio"><label for="radio032">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form09">
+	</g:form>
+	<g:form name="form09" method="post">
 	  <h3>Power, people, and things should be redistributed away from central locations
 </h3>
 		<div id="question09">
@@ -198,8 +207,8 @@ padding-left: 10%;
 			<input type="radio" id="radio035" name="radio"><label for="radio035">Agree</label>
 			<input type="radio" id="radio036" name="radio"><label for="radio036">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form10">
+	</g:form>
+	<g:form name="form10" method="post">
 	  <h3>Utilization of resources and decisions on local improvements is a job for those entities closest to the problem at hand
 </h3>
 		<div id="question10">
@@ -208,8 +217,8 @@ padding-left: 10%;
 			<input type="radio" id="radio039" name="radio"><label for="radio039">Agree</label>
 			<input type="radio" id="radio040" name="radio"><label for="radio040">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form11">
+	</g:form>
+	<g:form name="form11" method="post">
 	  <h3>Biodiversity should be preserved as much as possible for future generations
 </h3>
 		<div id="question11">
@@ -218,8 +227,8 @@ padding-left: 10%;
 			<input type="radio" id="radio043" name="radio"><label for="radio043">Agree</label>
 			<input type="radio" id="radio044" name="radio"><label for="radio044">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form12">
+	</g:form>
+	<g:form name="form12" method="post">
 	  <h3>Natural systems should be preserved for their own sake, rather than merely for human uses
 </h3>
 		<div id="question12">
@@ -228,8 +237,8 @@ padding-left: 10%;
 			<input type="radio" id="radio047" name="radio"><label for="radio047">Agree</label>
 			<input type="radio" id="radio048" name="radio"><label for="radio048">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form13">
+	</g:form>
+	<g:form name="form13" method="post">
 	  <h3>All persons have the same intrinsic worth, and rules that do not reflect fair treatment should be changed
 </h3>
 		<div id="question13">
@@ -238,8 +247,8 @@ padding-left: 10%;
 			<input type="radio" id="radio051" name="radio"><label for="radio051">Agree</label>
 			<input type="radio" id="radio052" name="radio"><label for="radio052">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form14">
+	</g:form>
+	<g:form name="form14" method="post">
 	  <h3>Group decision making and teamwork limits the likelihood of oppression and coercion
 </h3>
 		<div id="question14">
@@ -248,8 +257,8 @@ padding-left: 10%;
 			<input type="radio" id="radio055" name="radio"><label for="radio055">Agree</label>
 			<input type="radio" id="radio056" name="radio"><label for="radio056">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form15">
+	</g:form>
+	<g:form name="form15" method="post">
 	  <h3>Preserving an orthodox culture is of the utmost importance
 </h3>
 		<div id="question15">
@@ -258,8 +267,8 @@ padding-left: 10%;
 			<input type="radio" id="radio059" name="radio"><label for="radio059">Agree</label>
 			<input type="radio" id="radio060" name="radio"><label for="radio060">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form16">
+	</g:form>
+	<g:form name="form16" method="post">
 	  <h3>Beliefs can only be allowed to change if they do not conflict with foundational principles
 </h3>
 		<div id="question16">
@@ -268,8 +277,8 @@ padding-left: 10%;
 			<input type="radio" id="radio063" name="radio"><label for="radio063">Agree</label>
 			<input type="radio" id="radio064" name="radio"><label for="radio064">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form17">
+	</g:form>
+	<g:form name="form17" method="post">
 	  <h3>Attaining the goal of a free society is worth the challenge of changing rules
 </h3>
 		<div id="question17">
@@ -278,8 +287,8 @@ padding-left: 10%;
 			<input type="radio" id="radio067" name="radio"><label for="radio067">Agree</label>
 			<input type="radio" id="radio068" name="radio"><label for="radio068">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form18">
+	</g:form>
+	<g:form name="form18" method="post">
 	  <h3>As liberties and civil rights are made into laws, they are to be protected and enhanced
 </h3>
 		<div id="question18">
@@ -288,8 +297,8 @@ padding-left: 10%;
 			<input type="radio" id="radio071" name="radio"><label for="radio071">Agree</label>
 			<input type="radio" id="radio072" name="radio"><label for="radio072">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form19">
+	</g:form>
+	<g:form name="form19" method="post">
 	  <h3>Fast societal changes are useful and necessary for society to reach its full potential
 </h3>
 		<div id="question19">
@@ -298,8 +307,8 @@ padding-left: 10%;
 			<input type="radio" id="radio075" name="radio"><label for="radio075">Agree</label>
 			<input type="radio" id="radio076" name="radio"><label for="radio076">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form20">
+	</g:form>
+	<g:form name="form20" method="post">
 	  <h3>For society to change quickly, value systems need to be thoroughly and rapidly modified
 </h3>
 		<div id="question20">
@@ -308,8 +317,8 @@ padding-left: 10%;
 			<input type="radio" id="radio079" name="radio"><label for="radio079">Agree</label>
 			<input type="radio" id="radio080" name="radio"><label for="radio080">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form21">
+	</g:form>
+	<g:form name="form21" method="post">
 	  <h3>Individual differences in experience and perception cause people to have different values
 </h3>
 		<div id="question21">
@@ -318,8 +327,8 @@ padding-left: 10%;
 			<input type="radio" id="radio083" name="radio"><label for="radio083">Agree</label>
 			<input type="radio" id="radio084" name="radio"><label for="radio084">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form22">
+	</g:form>
+	<g:form name="form22" method="post">
 	  <h3>No action or belief is absolutely good or bad
 </h3>
 		<div id="question22">
@@ -328,8 +337,8 @@ padding-left: 10%;
 			<input type="radio" id="radio087" name="radio"><label for="radio087">Agree</label>
 			<input type="radio" id="radio088" name="radio"><label for="radio088">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form23">
+	</g:form>
+	<g:form name="form23" method="post">
 	  <h3>Getting and managing resources should be done by groups and organizations rather than an elite
 </h3>
 		<div id="question23">
@@ -338,8 +347,8 @@ padding-left: 10%;
 			<input type="radio" id="radio091" name="radio"><label for="radio091">Agree</label>
 			<input type="radio" id="radio092" name="radio"><label for="radio092">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form24">
+	</g:form>
+	<g:form name="form24" method="post">
 	  <h3>Management of organizations and resources requires cooperation between multiple entities to ensure public benefit
 </h3>
 		<div id="question24">
@@ -348,8 +357,8 @@ padding-left: 10%;
 			<input type="radio" id="radio095" name="radio"><label for="radio095">Agree</label>
 			<input type="radio" id="radio096" name="radio"><label for="radio096">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form25">
+	</g:form>
+	<g:form name="form25" method="post">
 	  <h3>Some in society should have more privileges and rights than others
 </h3>
 		<div id="question25">
@@ -358,8 +367,8 @@ padding-left: 10%;
 			<input type="radio" id="radio099" name="radio"><label for="radio099">Agree</label>
 			<input type="radio" id="radio100" name="radio"><label for="radio100">Strongly Agree</label>
 		</div>
-	</form>
-	<form name="form26">
+	</g:form>
+	<g:form name="form26" method="post">
 	  <h3>It is acceptable for one group to dominate other groups
 </h3>
 		<div id="question26">
@@ -368,8 +377,12 @@ padding-left: 10%;
 			<input type="radio" id="radio103" name="radio"><label for="radio103">Agree</label>
 			<input type="radio" id="radio104" name="radio"><label for="radio104">Strongly Agree</label>
 		</div>
-	</form>
+	</g:form>
   </div>
+  
+  <input type="button" value="Click Me!" onclick="submitForms()" />
+  
+  <input type="button" value="no click me!" onclick=javascript:sender()>
   
 </body>
 </html>

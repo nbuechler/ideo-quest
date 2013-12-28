@@ -10,5 +10,10 @@ class UrlMappings {
 //		"/"(view:"/index")
 		"/" controller: 'home', action: 'index'
 		"500"(view:'/error')
+		
+		"/ideology/save" {
+			controller = "ideology"
+			action = "save"
+		}
 	}
 }
