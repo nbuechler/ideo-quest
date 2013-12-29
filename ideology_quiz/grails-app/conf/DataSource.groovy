@@ -1,5 +1,8 @@
 dataSource {
     pooled = true
+//	driverClassName = "org.h2.Driver"
+//	username = "sa"
+//	password = ""
     driverClassName = "com.mysql.jdbc.Driver"
 	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
     username = "root"
@@ -14,9 +17,9 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-//            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = "jdbc:mysql://localhost:3306/sakila" //sakila?useUnicode=yes&characterEncoding=UTF-8 //poli_quest is name of database
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+//            url = "jdbc:h2:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+			url = "jdbc:mysql://localhost:3306/poli_quest" //sakila?useUnicode=yes&characterEncoding=UTF-8 //poli_quest is name of database
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
         }
     }
