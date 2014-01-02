@@ -1,0 +1,6 @@
+12-28 20:37:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'' (IDEOLOGY: VERSION BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."IDEOLOGY"("ID","VERSION","RADIO01","RADIO02","RADIO03")VALUES(?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5) [22018-164]
+12-28 20:37:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'' (IDEOLOGY: VERSION BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."IDEOLOGY"("ID","VERSION","RADIO01","RADIO02","RADIO03")VALUES(?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5) [22018-164]

@@ -54,8 +54,7 @@ padding-left: 10%;
 		</div>
 	</g:form>
   </div>
-  
-  <g:actionSubmit value="results" onclick="javascript:sender()"/>
+  <g:actionSubmit id="submitButton" value="Submit" onclick="javascript:sender()"/>
   
 </body>
 </html>

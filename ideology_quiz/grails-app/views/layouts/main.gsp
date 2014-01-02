@@ -18,6 +18,24 @@
 		<g:javascript library='jquery' />
 		<r:require module="jquery-ui"/>
 		
+		<style>
+		#submitButton {
+			font-size: 60%;
+			margin-left: 50%;
+		}
+		</style>
+		
+		<g:javascript>
+		$(function() {
+			$( "input[type=submit]" )
+				.button()
+				.click(function( event ) {
+				event.preventDefault();
+			});
+		});
+		
+		</g:javascript>
+		
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
