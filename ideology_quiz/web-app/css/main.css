@@ -8,6 +8,12 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1.1;
 }
 
+h3 {
+font-size: 250%;
+padding-bottom: 1%;
+padding-top: 2%;
+}
+
 /* BASE LAYOUT */
 
 html {
@@ -46,6 +52,17 @@ body {
 	-webkit-box-shadow: 0 0 0.3em #636394;
 	        box-shadow: 0 0 0.3em #636394;
 }
+
+form {
+font-size: 60%;
+padding-left: 5%;
+}
+
+#submitButton {
+			font-size: 60%;
+			margin-top: 2%;
+			margin-left: 90%;
+		}
 
 #ideologyLogo {
 	background-color: #8686a1;

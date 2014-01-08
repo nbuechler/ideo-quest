@@ -7,15 +7,15 @@
 
 <style>
 
-h3 {
-font-size: 140%;
-padding-bottom: 1%;
-padding-top: 2%;
+
+
+
+
 }
 
-form {
-font-size: 60%;
-padding-left: 10%;
+
+
+
 }
 
 .ideologystatus {

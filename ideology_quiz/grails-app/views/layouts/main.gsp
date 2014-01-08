@@ -19,10 +19,7 @@
 		<r:require module="jquery-ui"/>
 		
 		<style>
-		#submitButton {
-			font-size: 60%;
-			margin-left: 50%;
-		}
+		
 		</style>
 		
 		<g:javascript>

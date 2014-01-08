@@ -16,7 +16,7 @@ class IdeologyController {
 	
 	def q03 = {
 		
-		log.error(session.radio01 + "session attempt11")
+		log.error(session.radio01 + "session attempt")
 		def radio02 = request.getParameter("radio").toLong()
 		log.error(radio02)
 		session.radio02 = radio02
@@ -256,22 +256,48 @@ class IdeologyController {
 		long radio01 = session.radio01
 		long radio02 = session.radio02
 		long anarchismT = 0
+		long statismT = 0
 		if (radio01 > 0) {
 			anarchismT += 1;
 		}
 		if (radio02 > 0) {
 			anarchismT += 1;
 		}
+		if (radio01 < 0) {
+			statismT += 1;
+		}
+		if (radio02 < 0) {
+			statismT += 1;
+		}
 		long anarchism = radio01 + radio02
 		log.error("anarchism = " + anarchism)
+		log.error("statismT = " + statismT)
 		String anarchismStatus
+		String statismStatus
 		if (anarchism >= 5){
 			anarchismStatus = "Significantly"
+			statismStatus = "Not apparently"
 		} else if (anarchism >= 2){
 			anarchismStatus = "Moderately"
-		} else {
+			statismStatus = "Not apparently"
+		} else if (anarchism >= 1){
 			anarchismStatus = "Minimally"
+			statismStatus = "Not apparently"
+		} else if (anarchism <= -5){
+			statismStatus = "Significantly"
+			anarchismStatus = "Not apparently"
+		} else if (anarchism <= -2){
+			statismStatus = "Moderately"
+			anarchismStatus = "Not apparently"
+		} else if (anarchism <= -2) {
+			statismStatus = "Minimally"
+			anarchismStatus = "Not apparently"
+		} else {
+			anarchismStatus = "Not apparently"
+			statismStatus = "Not apparently"
 		}
+		log.error("anarchismStatus is " + anarchismStatus + "; statismStatus is " + statismStatus)
+		
 		
 		long radio03 = session.radio03
 		long radio04 = session.radio04

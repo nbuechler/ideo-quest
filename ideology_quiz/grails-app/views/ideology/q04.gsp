@@ -7,17 +7,6 @@
 
 <style>
 
-h3 {
-font-size: 140%;
-padding-bottom: 1%;
-padding-top: 2%;
-}
-
-form {
-font-size: 60%;
-padding-left: 10%;
-}
-
 </style>
 
 </head>
@@ -39,16 +28,19 @@ padding-left: 10%;
   <a href="${contextpath }/ideology_quiz/home/index">Home</a>
   </div>
   
-  <div id="formholder" style="margin-right: 45%;">
+  <div id="formholder" >
 	<g:form name="form04" action="q05" method="post">
 	<div>${radio03}</div>
-		<h3>Questioning or challenging leaders in an organization or institution should be forbidden
+		<h3>Leaders are always correct
 </h3>
-			<div id="question04" class="ataQuestion">
-			<input type="radio" id="radio009" value="0" name="radio" checked="checked"><label for="radio009">Strongly Disagree</label>
-			<input type="radio" id="radio010" value="1" name="radio"><label for="radio010">Disagree</label>
-			<input type="radio" id="radio011" value="2" name="radio"><label for="radio011">Agree</label>
-			<input type="radio" id="radio012" value="3" name="radio"><label for="radio012">Strongly Agree</label>
+		<div id="question04" class="ataQuestion">
+			<input type="radio" id="radio001" value="-3" name="radio"><label for="radio001">Strongly Disagree</label>
+			<input type="radio" id="radio002" value="-2" name="radio"><label for="radio002">Moderately Disagree</label>
+			<input type="radio" id="radio003" value="-1" name="radio"><label for="radio003">Slightly Disagree</label>
+			<input type="radio" id="radio004" value="0" name="radio" checked="checked"><label for="radio004">Neutral</label>
+			<input type="radio" id="radio005" value="1" name="radio"><label for="radio005">Slightly Agree</label>
+			<input type="radio" id="radio006" value="2" name="radio"><label for="radio006">Moderately Agree</label>
+			<input type="radio" id="radio007" value="3" name="radio"><label for="radio007">Strongly Agree</label>
 		</div>
 	</g:form>
   </div>
