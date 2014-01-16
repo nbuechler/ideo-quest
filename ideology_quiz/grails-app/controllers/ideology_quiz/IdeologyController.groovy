@@ -12,6 +12,7 @@ class IdeologyController {
 		log.error(radio01)
 		session.radio01 = radio01
 		[radio01:radio01]
+		
 	 }
 	
 	def q03 = {
@@ -21,6 +22,7 @@ class IdeologyController {
 		log.error(radio02)
 		session.radio02 = radio02
 		[radio02:radio02]
+		
 	 }
 	
 	
@@ -31,11 +33,11 @@ class IdeologyController {
 		log.error(radio03.toString())
 		session.radio03 = radio03
 		[radio03:radio03]
+		
 	 }
 	
 	
 	def q05 = {
-		
 		log.error(session.radio03 + "session attempt")
 		long radio04 = request.getParameter("radio").toLong()
 		log.error(radio04)
@@ -253,6 +255,190 @@ class IdeologyController {
 	 }
 		
 	def end = {
+		long radio01 = session.radio01
+		long radio02 = session.radio02
+		long anarchismT = 0
+		long statismT = 0
+		long anarchism = radio01 + radio02
+		
+		long radio03 = session.radio03
+		long radio04 = session.radio04
+		long authoritarianismT = 0
+		long authoritarianism = radio03 + radio04
+		
+		long radio05 = session.radio05
+		long radio06 = session.radio06
+		long capitalismT = 0
+		long capitalism = radio05 + radio06
+		
+		long radio07 = session.radio07
+		long radio08 = session.radio08
+		long conservatismT = 0
+		long conservatism = radio07 + radio08
+		
+		long radio09 = session.radio09
+		long radio10 = session.radio10
+		long decentralismT = 0
+		long decentralism = radio09 + radio10
+		
+		long radio11 = session.radio11
+		long radio12 = session.radio12
+		long ecologismT = 0
+		long ecologism = radio11 + radio12
+
+		long radio13 = session.radio13
+		long radio14 = session.radio14
+		long egalitarianismT = 0
+		long egalitarianism = radio13 + radio14
+		
+		long radio15 = session.radio15
+		long radio16 = session.radio16
+		long fundamentalismT = 0
+		long fundamentalism = radio15 + radio16
+		
+		long radio17 = session.radio17
+		long radio18 = session.radio18
+		long liberalismT = 0
+		long liberalism = radio17 + radio18
+		
+		long radio19 = session.radio19
+		long radio20 = session.radio20
+		long radicalismT = 0
+		long radicalism = radio19 + radio20
+		
+		long radio21 = session.radio21
+		long radio22 = session.radio22
+		long relativismT = 0
+		long relativism = radio21 + radio22
+		
+		long radio23 = session.radio23
+		long radio24 = session.radio24
+		long socialismT = 0
+		long socialism = radio23 + radio24
+		
+		long radio25 = session.radio25
+		long radio26 = 0
+		if (request.getParameter("radio") != null){
+			radio26 = request.getParameter("radio").toLong()
+		} else {
+			radio26 = 0;
+			}
+		log.error(radio26)
+		long supremacismT = 0
+		long supremacism = radio25 + radio26
+
+		
+		//Get all of the scores for each radio button, and put it in an array
+		def allQuestionScores = [radio01, radio02, radio03, radio04, radio05, radio06, radio07, radio08, radio09, radio10, radio11, radio12, radio13, radio14, radio15, radio16, radio17, radio18, radio19, radio20, radio21, radio22, radio23, radio24, radio25, radio26]
+		log.error("allQuestionScores are " + allQuestionScores)
+		
+		//Define variables needed
+		def allThetaValues = [];
+		def allRadiusScores = [];
+		def ideologies = [];
+		def ideologiesCorrelates = [];
+		def thetaDenominator = 0;
+		def radiusDenominator = 0;
+		
+		def allThetaPercentages = [];
+		def allThetaRadians = [];
+		def allRadiusPercentages = [];
+		def allRadiusUnits = [];
+		
+		//Get the scores for each ideology, which are the T values and radius values
+		for (def i=0; i < allQuestionScores.size(); i+=2){
+			def sumOfTwoTValues = 0
+				if (allQuestionScores[i] != 0){
+					sumOfTwoTValues += 1
+				}
+				if (allQuestionScores[i+1] != 0){
+					sumOfTwoTValues += 1
+				}
+			def sumOfTwoQuestions =	allQuestionScores[i] + allQuestionScores[i+1]
+			allRadiusScores << sumOfTwoQuestions
+			allThetaValues << sumOfTwoTValues
+		}
+		log.error("allThetaValues are " + allThetaValues)
+		log.error("allRadiusScores are " + allRadiusScores)
+		
+		//Figure out if the Radius Score is the Ideology OR the Anti-Ideology
+		for (def i=0; i < allRadiusScores.size(); i++){
+			if (allRadiusScores[i] > 0){
+				ideologies << allRadiusScores[i]
+				ideologiesCorrelates << 0
+			}
+			else if (allRadiusScores[i] < 0){
+				ideologiesCorrelates << allRadiusScores[i].abs()
+				ideologies << 0
+			}
+			else {
+				ideologies << 0
+				ideologiesCorrelates << 0
+			}
+		}
+		log.error(ideologies + "ideologies")
+		log.error(ideologiesCorrelates + "ideolgoiesCorrelates")
+		
+		
+		//Create the actual percentage values for Thetas
+		
+		//Find the theta denominator
+		for (def i=0; i < allThetaValues.size(); i++){
+			thetaDenominator += allThetaValues[i]
+		}
+		log.error(thetaDenominator + " is thetaDenominator")
+		
+		//Build the array of Theta values as percents and radians
+		for (def i=0; i < allThetaValues.size(); i++){
+			allThetaPercentages << allThetaValues[i]/thetaDenominator
+			allThetaRadians << allThetaValues[i]/thetaDenominator * 2 * Math.PI
+		}
+		log.error(allThetaPercentages + " are allThetaPercentages")
+		log.error(allThetaRadians + " are allThetaRadians")
+		
+		
+		//Create the actual percentage values for Radius'
+		
+		//Find the radius denominator
+		for (def i=0; i < ideologies.size(); i++){
+			if (ideologies[i] != 0){
+				radiusDenominator += ideologies[i]
+			}
+			if (ideologiesCorrelates[i] != 0){
+				radiusDenominator += ideologiesCorrelates[i]
+			}
+		}
+		log.error(radiusDenominator + " is radiusDenominator")
+		
+		//Build the array of Radius values as percents
+		for (def i=0; i < allRadiusScores.size(); i++){
+			allRadiusPercentages << (allRadiusScores[i].abs())/radiusDenominator * 100
+		}
+		log.error(allRadiusPercentages + " are allRadiusPercentages")
+		
+		//Create the actual values in units for Radius'
+		
+		//Build the array of Radius values as percents
+		for (def i=0; i < allRadiusPercentages.size(); i++){
+			allRadiusUnits << Math.sqrt(allRadiusPercentages[i]/allThetaRadians[i])
+			
+			//add the first, then add the first and the second, etc....
+		}
+		log.error(allRadiusUnits + " are allRadiusUnits")
+		
+		[anarchismPercent:allRadiusPercentages[0], authoritarianismPercent:allRadiusPercentages[1], capitalismPercent:allRadiusPercentages[2], conservatismPercent:allRadiusPercentages[3], decentralismPercent:allRadiusPercentages[4], 
+			ecologismPercent:allRadiusPercentages[5], egalitarianismPercent:allRadiusPercentages[6], fundamentalismPercent:allRadiusPercentages[7], liberalismPercent:allRadiusPercentages[8], radicalismPercent:allRadiusPercentages[9], 
+			relativismPercent:allRadiusPercentages[10], socialismPercent:allRadiusPercentages[11], supremacismPercent:allRadiusPercentages[12],
+		anarchismRadius:allRadiusUnits[0], authoritarianismRadius:allRadiusUnits[1], capitalismRadius:allRadiusUnits[2], conservatismRadius:allRadiusUnits[3], decentralismRadius:allRadiusUnits[4], 
+			ecologismRadius:allRadiusUnits[5], egalitarianismRadius:allRadiusUnits[6], fundamentalismRadius:allRadiusUnits[7], liberalismRadius:allRadiusUnits[8], radicalismRadius:allRadiusUnits[9], 
+			relativismRadius:allRadiusUnits[10], socialismRadius:allRadiusUnits[11], supremacismRadius:allRadiusUnits[12],
+		anarchismTheta:allThetaRadians[0], authoritarianismTheta:allThetaRadians[1], capitalismTheta:allThetaRadians[2], conservatismTheta:allThetaRadians[3], decentralismTheta:allThetaRadians[4], 
+			ecologismTheta:allThetaRadians[5], egalitarianismTheta:allThetaRadians[6], fundamentalismTheta:allThetaRadians[7], liberalismTheta:allThetaRadians[8], radicalismTheta:allThetaRadians[9], 
+			relativismTheta:allThetaRadians[10], socialismTheta:allThetaRadians[11], supremacismTheta:allThetaRadians[12]]
+		
+	}
+/*	
+	def end0 = {
 		long radio01 = session.radio01
 		long radio02 = session.radio02
 		long anarchismT = 0
@@ -695,5 +881,6 @@ class IdeologyController {
 			ecologismRadius:ecologismRadius, egalitarianismRadius:egalitarianismRadius, fundamentalismRadius:fundamentalismRadius, liberalismRadius:liberalismRadius, radicalismRadius:radicalismRadius, 
 			relativismRadius:relativismRadius, socialismRadius:socialismRadius, supremacismRadius:supremacismRadius]
 	}
+	*/
 	
 }

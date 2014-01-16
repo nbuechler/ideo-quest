@@ -32,24 +32,25 @@ font-size: 80%;
 
 </head>
 
-<g:set var="radiusScale" value="${3}" />
+<g:set var="radiusScale" value="${20}" />
 
 <g:javascript>
 
+<!-- Nightingale Graph -->
 	var data = [
-        {start: 0, theta: ${anarchismTheta} / 100, color: "purple", inRadius: "0", outRadius: ${radiusScale * anarchismRadius}},
-        {start: (${anarchismTheta}) / 100, theta: ${authoritarianismTheta} / 100, color: "brown", inRadius: "0", outRadius: ${radiusScale * authoritarianismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta}) / 100, theta: ${capitalismTheta} / 100, color: "gold", inRadius: "0", outRadius: ${radiusScale * capitalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta}) / 100, theta: ${conservatismTheta} / 100, color: "blue", inRadius: "0", outRadius: ${radiusScale * conservatismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta}) / 100, theta: ${decentralismTheta} / 100, color: "lightblue", inRadius: "0", outRadius: ${radiusScale * decentralismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta}) / 100, theta: ${ecologismTheta} / 100, color: "green", inRadius: "0", outRadius: ${radiusScale * ecologismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta}) / 100, theta: ${egalitarianismTheta} / 100, color: "pink", inRadius: "0", outRadius: ${radiusScale * egalitarianismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta}) / 100, theta: ${fundamentalismTheta} / 100, color: "maroon", inRadius: "0", outRadius: ${radiusScale * fundamentalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta}) / 100, theta: ${liberalismTheta} / 100, color: "orange", inRadius: "0", outRadius: ${radiusScale * liberalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta}) / 100, theta: ${radicalismTheta} / 100, color: "dimgray", inRadius: "0", outRadius: ${radiusScale * radicalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta}) / 100, theta: ${relativismTheta} / 100, color: "yellow", inRadius: "0", outRadius: ${radiusScale * relativismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta}) / 100, theta: ${socialismTheta} / 100, color: "red", inRadius: "0", outRadius: ${radiusScale * socialismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta} + ${socialismTheta}) / 100, theta: ${supremacismTheta} / 100, color: "gray", inRadius: "0", outRadius: ${radiusScale * supremacismRadius}},
+        {start: 0, theta: ${anarchismTheta}, color: "purple", inRadius: "0", outRadius: ${radiusScale * anarchismRadius}},
+        {start: (${anarchismTheta}), theta: ${authoritarianismTheta}, color: "brown", inRadius: "0", outRadius: ${radiusScale * authoritarianismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta}), theta: ${capitalismTheta}, color: "gold", inRadius: "0", outRadius: ${radiusScale * capitalismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta}), theta: ${conservatismTheta}, color: "blue", inRadius: "0", outRadius: ${radiusScale * conservatismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta}), theta: ${decentralismTheta}, color: "lightblue", inRadius: "0", outRadius: ${radiusScale * decentralismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta}), theta: ${ecologismTheta}, color: "green", inRadius: "0", outRadius: ${radiusScale * ecologismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta}), theta: ${egalitarianismTheta}, color: "pink", inRadius: "0", outRadius: ${radiusScale * egalitarianismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta}), theta: ${fundamentalismTheta}, color: "maroon", inRadius: "0", outRadius: ${radiusScale * fundamentalismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta}), theta: ${liberalismTheta}, color: "orange", inRadius: "0", outRadius: ${radiusScale * liberalismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta}), theta: ${radicalismTheta}, color: "dimgray", inRadius: "0", outRadius: ${radiusScale * radicalismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta}), theta: ${relativismTheta}, color: "yellow", inRadius: "0", outRadius: ${radiusScale * relativismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta}), theta: ${socialismTheta}, color: "red", inRadius: "0", outRadius: ${radiusScale * socialismRadius}},
+        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta} + ${socialismTheta}), theta: ${supremacismTheta}, color: "gray", inRadius: "0", outRadius: ${radiusScale * supremacismRadius}},
         ];
 
 
@@ -64,7 +65,7 @@ font-size: 80%;
 			.attr("class", "chart")
 			.attr("width", 420)
 			.attr("height", 420).append("svg:g")
-			.attr("transform", "translate(200,200)")
+			.attr("transform", "translate(170,150)")
 			;
 
 	chart.selectAll("path")
