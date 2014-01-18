@@ -356,7 +356,18 @@ class IdeologyController {
 				}
 			def sumOfTwoQuestions =	allQuestionScores[i] + allQuestionScores[i+1]
 			allRadiusScores << sumOfTwoQuestions
-			allThetaValues << sumOfTwoTValues
+			
+				//This logic will create the gap
+				//allThetaValues << sumOfTwoTValues
+				
+				//This logic will remove the gap
+				if ((allQuestionScores[i] + allQuestionScores[i+1]) != 0){
+					allThetaValues << sumOfTwoTValues
+				}
+				if (allQuestionScores[i] + allQuestionScores[i+1] == 0){
+					allThetaValues << 0
+				}
+				
 		}
 		log.error("allThetaValues are " + allThetaValues)
 		log.error("allRadiusScores are " + allRadiusScores)
@@ -434,7 +445,8 @@ class IdeologyController {
 			relativismRadius:allRadiusUnits[10], socialismRadius:allRadiusUnits[11], supremacismRadius:allRadiusUnits[12],
 		anarchismTheta:allThetaRadians[0], authoritarianismTheta:allThetaRadians[1], capitalismTheta:allThetaRadians[2], conservatismTheta:allThetaRadians[3], decentralismTheta:allThetaRadians[4], 
 			ecologismTheta:allThetaRadians[5], egalitarianismTheta:allThetaRadians[6], fundamentalismTheta:allThetaRadians[7], liberalismTheta:allThetaRadians[8], radicalismTheta:allThetaRadians[9], 
-			relativismTheta:allThetaRadians[10], socialismTheta:allThetaRadians[11], supremacismTheta:allThetaRadians[12]]
+			relativismTheta:allThetaRadians[10], socialismTheta:allThetaRadians[11], supremacismTheta:allThetaRadians[12],
+		ideologiesCorrelates:ideologiesCorrelates, ideologies:ideologies]
 		
 	}
 /*	

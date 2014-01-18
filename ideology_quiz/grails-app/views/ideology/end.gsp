@@ -87,6 +87,9 @@ font-size: 80%;
 	var startColor = ["LightSlateGray", "GreenYellow", "Tomato", "Aqua", "GoldenRod", "DarkRed", "Indigo", "LightSeaGreen", "Sienna", "MediumOrchid", "Fuchsia", "ForestGreen", "GoldenRod"];
 	var stopColor = ["purple", "brown","gold","blue","lightblue","green","pink","maroon","orange","dimgray","yellow","red","gray"];
 
+	var ideologiesCorrelates = ${ideologiesCorrelates};
+	var ideologies = ${ideologies};
+
 	var w = 100,
 	    h = 10;
 	    hpadding = 35;
@@ -108,7 +111,7 @@ font-size: 80%;
 	
 		gradient.append("svg:stop")
 		    .attr("offset", "-20%")
-		    .attr("stop-color", "#F2F2F2")
+		    .attr("stop-color", "white")
 		    .attr("stop-opacity", 1);
 		
 		gradient.append("svg:stop")
@@ -137,7 +140,7 @@ font-size: 80%;
 		
 		gradientC.append("svg:stop")
 		    .attr("offset", "100%")
-		    .attr("stop-color", "#F2F2F2")
+		    .attr("stop-color", "white")
 		    .attr("stop-opacity", 1);
 		    
 		svg.append("svg:rect")
@@ -148,17 +151,17 @@ font-size: 80%;
 		    
 		<!-- Overlay based on the percentage of an Correlate ideology //change the width -->    
 		svg.append("svg:rect")
-			.attr("width", w/4 + "%")
+			.attr("width", ((100 - (ideologiesCorrelates[i-1]/6) * 100)) /2 + "%")
 			.attr("height", h)
 			.attr("transform", "translate(0," + nextRectHeight + ")")
 			.style("fill", "white")
-			.style("opacity", .9);
+			.style("opacity", .95);
 		
 		<!-- Overlay based on the percentage of an ideology //change the translation and the width-->    
 		svg.append("svg:rect")
-			.attr("width", w/4 + "%")
+			.attr("width", ((100 - (ideologies[i-1]/6) * 100)) /2 + "%")
 			.attr("height", h)
-			.attr("transform", "translate(505," + nextRectHeight + ")")
+			.attr("transform", "translate(" + (337 + (55 * (ideologies[i-1])) + ((5/6) * (ideologies[i-1]))) + "," + nextRectHeight + ")")
 			/*
 			For reference
 			335 translation is half of the whole spectrum, or the zero position of the rightIsms
@@ -169,7 +172,7 @@ font-size: 80%;
 			
 			*/
 			.style("fill", "white")
-			.style("opacity", .9);
+			.style("opacity", .95);
 	}
 	
 
