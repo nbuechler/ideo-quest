@@ -36,7 +36,44 @@ font-size: 80%;
 <g:javascript>
 
 <!-- Nightingale Graph -->
-	var data = [
+	
+	var opacityChanger = .1;
+	
+	var allThetaRadians = ${allThetaRadians};
+	var allRadiusUnits = ${allRadiusUnits};
+	var allThetaStart = 0
+	
+	var ideologiesCorrelates = ${ideologiesCorrelates};
+	var ideologies = ${ideologies};
+	
+	var startColor = ["LightSlateGray", "GreenYellow", "Tomato", "Aqua", "GoldenRod", "DarkRed", "Indigo", "LightSeaGreen", "Sienna", "MediumOrchid", "Fuchsia", "ForestGreen", "GoldenRod"];
+	var stopColor = ["purple", "brown","gold","blue","lightblue","green","pink","maroon","orange","dimgray","yellow","red","gray"];
+	
+	//Build the Data of the Nightingale
+	var data = [];
+	
+	for (i=0; i < allThetaRadians.length; i++){
+		
+		//Choose the color/opacity of the ng slice
+		if(ideologiesCorrelates[i] > 0){
+			ngSliceColor = startColor[i]
+			ngSliceOpacity = ideologiesCorrelates[i]/6
+		} else if (ideologies[i] > 0) {
+			ngSliceColor = stopColor[i]
+			ngSliceOpacity = ideologies[i]/6
+		} else {
+			ngSliceColor = "black"
+			ngSliceOpacity = 1
+		}
+	
+		if(i==0){
+			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i]})
+		} else {
+			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i]})
+		}
+		allThetaStart += allThetaRadians[i]
+	}
+        /* DEPRICATED
         {start: 0, theta: ${anarchismTheta}, color: "purple", inRadius: "0", outRadius: ${radiusScale * anarchismRadius}},
         {start: (${anarchismTheta}), theta: ${authoritarianismTheta}, color: "brown", inRadius: "0", outRadius: ${radiusScale * authoritarianismRadius}},
         {start: (${anarchismTheta} + ${authoritarianismTheta}), theta: ${capitalismTheta}, color: "gold", inRadius: "0", outRadius: ${radiusScale * capitalismRadius}},
@@ -51,7 +88,7 @@ font-size: 80%;
         {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta}), theta: ${socialismTheta}, color: "red", inRadius: "0", outRadius: ${radiusScale * socialismRadius}},
         {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta} + ${socialismTheta}), theta: ${supremacismTheta}, color: "gray", inRadius: "0", outRadius: ${radiusScale * supremacismRadius}},
         ];
-
+		*/
 
 	var arc = d3.svg.arc()
 			.innerRadius(function(d, i){return d.inRadius;})
@@ -70,25 +107,20 @@ font-size: 80%;
 	chart.selectAll("path")
 			.data(data)
 			.enter().append("svg:path")
+			.style("opacity", function(d,i){
+				return d.opacity;
+			})
 			.style("fill", function(d, i){
 				return d.color;
 			})
+			.attr("stroke", "black")
+			.attr("stroke-width", "1px")
 			.attr("d", arc)
 			;
-
-</g:javascript>
-
-<g:javascript>
 
 <!-- Spectrums -->
 
 	<!-- Define the startColor array and stopColor array -->
-
-	var startColor = ["LightSlateGray", "GreenYellow", "Tomato", "Aqua", "GoldenRod", "DarkRed", "Indigo", "LightSeaGreen", "Sienna", "MediumOrchid", "Fuchsia", "ForestGreen", "GoldenRod"];
-	var stopColor = ["purple", "brown","gold","blue","lightblue","green","pink","maroon","orange","dimgray","yellow","red","gray"];
-
-	var ideologiesCorrelates = ${ideologiesCorrelates};
-	var ideologies = ${ideologies};
 
 	var w = 100,
 	    h = 10;
