@@ -25,6 +25,15 @@ text-align: right;
 font-size: 80%;
 }
 
+div.tooltip {
+    visibility:hidden;
+    background-color: lightblue;
+    border:solid gray;
+    border-width: 1px;
+    padding: 10px;
+    position: absolute;
+}
+
 </style>
 
 <g:javascript src="d3.v3.js" />
@@ -41,6 +50,7 @@ font-size: 80%;
 	
 	var allThetaRadians = ${allThetaRadians};
 	var allRadiusUnits = ${allRadiusUnits};
+	var allRadiusPercentages = ${allRadiusPercentages}
 	var allThetaStart = 0
 	
 	var ideologiesCorrelates = ${ideologiesCorrelates};
@@ -67,9 +77,9 @@ font-size: 80%;
 		}
 	
 		if(i==0){
-			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i]})
+			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i], areaPercentage:allRadiusPercentages[i]})
 		} else {
-			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i]})
+			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i], areaPercentage:allRadiusPercentages[i]})
 		}
 		allThetaStart += allThetaRadians[i]
 	}
@@ -104,6 +114,8 @@ font-size: 80%;
 			.attr("transform", "translate(170,150)")
 			;
 
+	var tooltip = d3.select("div.tooltip");
+
 	chart.selectAll("path")
 			.data(data)
 			.enter().append("svg:path")
@@ -116,6 +128,30 @@ font-size: 80%;
 			.attr("stroke", "black")
 			.attr("stroke-width", "1px")
 			.attr("d", arc)
+			.on("mouseover", function() {
+		        d3.select(this)
+		        .style("opacity", .1)
+		        return tooltip
+		        	.style("visibility", "visible")
+		        	.style("background-color", this.__data__.color)
+		        	//.style("opacity", .2)
+		        	.text(this.__data__.areaPercentage.toFixed(2) + "%")
+				;
+		    })
+		     .on('mousemove', function(d) {
+				return tooltip
+		            .style("top", (d3.event.pageY + 16) + "px")
+		            .style("left", (d3.event.pageX + 16) + "px");
+			})
+		    .on("mouseout", function() {
+		        d3.select(this)
+		        .style("opacity", function(d,i){
+				return d.opacity;
+				})
+				return tooltip
+					.style("visibility", "hidden")
+				;
+		    })
 			;
 
 <!-- Spectrums -->
@@ -187,7 +223,7 @@ font-size: 80%;
 			.attr("height", h)
 			.attr("transform", "translate(0," + nextRectHeight + ")")
 			.style("fill", "white")
-			.style("opacity", .95);
+			.style("opacity", .90);
 		
 		<!-- Overlay based on the percentage of an ideology //change the translation and the width-->    
 		svg.append("svg:rect")
@@ -204,7 +240,17 @@ font-size: 80%;
 			
 			*/
 			.style("fill", "white")
-			.style("opacity", .95);
+			.style("opacity", .90);
+			
+		<!-- Rectangle tick marks, space 55 + 5/6 //change the translation and the width-->    
+		for(j = 0; j < 13; j++){
+			svg.append("svg:rect")
+				.attr("width", .1 + "%")
+				.attr("height", h)
+				.attr("transform", "translate(" + ((110 + 10/6) * (j)) + "," + nextRectHeight + ")")
+				.style("fill", "black")
+				.style("opacity", 1);
+		}
 	}
 	
 
@@ -244,8 +290,9 @@ font-size: 80%;
 			<tr><td class="ideologystatus">${supremacismStatus}</td><td>supremacist</td><td>${supremacismPercent}% of your Ideology</td></tr>
 		</table>
 		
-	   <div id="nGraph" style="width: 320px; height: 320px; float: right;"> </div> 
-
+	   <div id="nGraph" style="width: 320px; height: 320px; float: right;"> 
+	   </div> 
+	   <div class="tooltip">Errorror</div>
   </div>
   
   <div id="spectrum holder" style="margin-top: 45%;">
