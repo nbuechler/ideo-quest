@@ -1,56 +1,51 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<meta name="layout" content="main"/>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="layout" content="main" />
 <title>Results</title>
 
 <style>
-
-.leftIsm{
-margin-top: 16%;
-font-size: 72%;
+.leftIsm {
+	margin-top: 16%;
+	font-size: 72%;
 }
 
-.rightIsm{
-margin-top: 16%;
-font-size: 72%;
+.rightIsm {
+	margin-top: 16%;
+	font-size: 72%;
 }
 
 .ideologystatus {
-text-align: right;
+	text-align: right;
 }
 
 #resultsTable {
-font-size: 80%;
+	font-size: 80%;
 }
 
 div.tooltip {
-    visibility:hidden;
-    background-color: lightblue;
-    font-size: 80%;
-    border:solid gray;
-    border-width: 1px;
-    padding: 10px;
-    position: absolute;
-    text-shadow:
-    -.8px -.8px 0 #000,
-    .8px -.8px 0 #000,
-    -.8px .8px 0 #000,
-    .8px .8px 0 #000;
+	visibility: hidden;
+	background-color: lightblue;
+	font-size: 100%;
+	border: solid gray;
+	border-width: 1px;
+	padding: 10px;
+	position: absolute;
+	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
+		.8px .8px 0 #000;
 }
-
 </style>
 
 <g:javascript src="d3.v3.js" />
 
 </head>
 
-<g:set var="radiusScale" value="${20}" />
+<g:set var="radiusScale" value="${30}" />
 
 <g:javascript>
 
-<!-- Nightingale Graph -->
+	<!-- Nightingale Graph -->
 	
 	var opacityChanger = .1;
 	
@@ -109,9 +104,9 @@ div.tooltip {
 
 	var chart = d3.select("#nGraph").append("svg:svg")
 			.attr("class", "chart")
-			.attr("width", 420)
-			.attr("height", 420).append("svg:g")
-			.attr("transform", "translate(170,150)")
+			.style("width", "420px")
+			.style("height", "320px").append("svg:g")
+			.attr("transform", "translate(218,150)")
 			;
 
 	var tooltip = d3.select("div.tooltip");
@@ -278,20 +273,31 @@ div.tooltip {
 	document.forms["form03"].submit();
 	return true;
 	}
-	
+
+</g:javascript>
+
+<g:javascript>
+		$(function() {
+			$( "#accordion" ).accordion({
+			});
+		});
 </g:javascript>
 
 <body>
-<div class="body">
-  <a href="${contextpath }/ideology_quiz/ideology/index">Home</a>
-  </div>
-  
-  <div id="formholder" style="margin-left: 0%;">
-  		 
-  		<table id="resultsTable" style="width: 46%; float: left;">
-			<tr><td style="text-align: right; font-size: 85%;">Based on your responses, we discovered the following:</td></tr>
+
+	<div class="body">
+		<a href="${contextpath }/ideology_quiz/ideology/index">Home</a>
+	</div>
+
+	<div id="formholder" style="margin-left: 0%;">
+
+		<table id="resultsTable" style="width: 46%; float: left;">
+			<tr>
+				<td style="text-align: right; font-size: 85%;">Based on your
+					responses, we discovered the following:</td>
+			</tr>
 		</table>
-		<%--
+		<%-- DEPRICATED
 		<table id="resultsTable" style="width: 66%; float: left;">
 			<tr><td class="ideologystatus">${anarchismStatus}</td><td>anarchist</td><td>${anarchismPercent}% of your Ideology</td></tr>
 			<tr><td class="ideologystatus">${authoritarianismStatus}</td><td>authoritarian</td><td>${authoritarianismPercent}% of your Ideology</td></tr>
@@ -308,44 +314,68 @@ div.tooltip {
 			<tr><td class="ideologystatus">${supremacismStatus}</td><td>supremacist</td><td>${supremacismPercent}% of your Ideology</td></tr>
 		</table>
 		--%>
-		
-	   <div id="nGraph" style="width: 320px; height: 320px; float: left;"> 
-	   </div> 
-	   <div class="tooltip">Errorror</div>
-  </div>
-  
-  <div id="spectrumholder" style="margin-top: 34%;">
-	  <div style="width: 13%; float: left; text-align: right; margin-top: 1.3%;">
-	  	<div class="leftIsm">Statism</div>
-	  	<div class="leftIsm">Republicanism</div>
-	  	<div class="leftIsm">Marxism</div>
-	  	<div class="leftIsm">Progressivism</div>
-	  	<div class="leftIsm">Centralism</div>
-	  	<div class="leftIsm">Anthropocentrism</div>
-	  	<div class="leftIsm">Elitism</div>
-	  	<div class="leftIsm">Pluralism</div>
-	  	<div class="leftIsm">Facism</div>
-	  	<div class="leftIsm">Loyalism</div>
-	  	<div class="leftIsm">Ethnocentrism</div>
-	  	<div class="leftIsm">Corporatism</div>
-	  	<div class="leftIsm">Democratism</div>
-	  </div>	
-	  <div id="onethreeGraph" style="width: 70%; margin-right: 15%; margin-left: 15%;"> </div> 
-	  <div style="width: 13%; float: right; margin-top: -55.3%;">
-		  <div class="rightIsm">Anarchism</div>
-		  <div class="rightIsm">Authoritarianism</div>
-		  <div class="rightIsm">Capitalism</div>
-		  <div class="rightIsm">Conservatism</div>
-		  <div class="rightIsm">Decentralism</div>
-		  <div class="rightIsm">Ecologism</div>
-		  <div class="rightIsm">Egalitarianism</div>
-		  <div class="rightIsm">Fundamentalism</div>
-		  <div class="rightIsm">Liberalism</div>
-		  <div class="rightIsm">Radicalism</div>
-		  <div class="rightIsm">Relativism</div>
-		  <div class="rightIsm">Socialism</div>
-		  <div class="rightIsm">Supremacism</div>
-	  </div>	
-  </div>
+
+		<div id="accordion"
+			style="font-size: .6em; text-align: right; width: 460px; float: left;">
+			<h3>Nightingale Graph</h3>
+			<div>
+				<div id="nGraph">
+				</div>
+				<div class="tooltip">Errorror</div>
+			</div>
+			<h3>Graph B</h3>
+			<div>
+				<p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum
+					Vivamus non quam. In suscipit faucibus urna.</p>
+			</div>
+			<h3>Graph C</h3>
+			<div>
+				<p>Nam enim risus, molestie et, porta ac, aliquam ac, risus.
+					nisi, eu iaculis leo purus venenatis dui.</p>
+			</div>
+			<h3>Graph D</h3>
+			<div>
+				<p>Cras dictum. Pellentesque habitant morbi tristique senectus
+					et per conubia nostra, per inceptos himenaeos.</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="spectrumholder" style="margin-top: 40%;">
+		<div
+			style="width: 13%; float: left; text-align: right; margin-top: 1.3%;">
+			<div class="leftIsm">Statism</div>
+			<div class="leftIsm">Republicanism</div>
+			<div class="leftIsm">Marxism</div>
+			<div class="leftIsm">Progressivism</div>
+			<div class="leftIsm">Centralism</div>
+			<div class="leftIsm">Anthropocentrism</div>
+			<div class="leftIsm">Elitism</div>
+			<div class="leftIsm">Pluralism</div>
+			<div class="leftIsm">Facism</div>
+			<div class="leftIsm">Loyalism</div>
+			<div class="leftIsm">Ethnocentrism</div>
+			<div class="leftIsm">Corporatism</div>
+			<div class="leftIsm">Democratism</div>
+		</div>
+		<div id="onethreeGraph"
+			style="width: 70%; margin-right: 15%; margin-left: 15%;"></div>
+		<div style="width: 13%; float: right; margin-top: -55.3%;">
+			<div class="rightIsm">Anarchism</div>
+			<div class="rightIsm">Authoritarianism</div>
+			<div class="rightIsm">Capitalism</div>
+			<div class="rightIsm">Conservatism</div>
+			<div class="rightIsm">Decentralism</div>
+			<div class="rightIsm">Ecologism</div>
+			<div class="rightIsm">Egalitarianism</div>
+			<div class="rightIsm">Fundamentalism</div>
+			<div class="rightIsm">Liberalism</div>
+			<div class="rightIsm">Radicalism</div>
+			<div class="rightIsm">Relativism</div>
+			<div class="rightIsm">Socialism</div>
+			<div class="rightIsm">Supremacism</div>
+		</div>
+	</div>
 </body>
 </html>

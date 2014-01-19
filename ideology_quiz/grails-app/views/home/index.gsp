@@ -7,7 +7,8 @@
 
 	<g:javascript>
 		$(function() {
-			$( "#accordion" ).accordion();
+			$( "#accordion" ).accordion({
+			});
 		});
     </g:javascript>
 
