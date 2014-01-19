@@ -28,10 +28,16 @@ font-size: 80%;
 div.tooltip {
     visibility:hidden;
     background-color: lightblue;
+    font-size: 80%;
     border:solid gray;
     border-width: 1px;
     padding: 10px;
     position: absolute;
+    text-shadow:
+    -.8px -.8px 0 #000,
+    .8px -.8px 0 #000,
+    -.8px .8px 0 #000,
+    .8px .8px 0 #000;
 }
 
 </style>
@@ -59,46 +65,40 @@ div.tooltip {
 	var startColor = ["LightSlateGray", "GreenYellow", "Tomato", "Aqua", "GoldenRod", "DarkRed", "Indigo", "LightSeaGreen", "Sienna", "MediumOrchid", "Fuchsia", "ForestGreen", "GoldenRod"];
 	var stopColor = ["purple", "brown","gold","blue","lightblue","green","pink","maroon","orange","dimgray","yellow","red","gray"];
 	
+	var nameIdentStart = ["Statist", "Republican","Marxist","Progressive","Centralist","Anthropocentralist","Elitist","Pluralist","Facist","Loyalist","Ethnocentralist","Corporatist","Democrat"];
+	var nameIdentStop = ["Anarchist", "Authoritarian", "Capitalist", "Conservative", "Decentralist", "Ecologist", "Egalitarianist", "Fundamentalist", "Liberal", "Radical", "Relativist", "Socialist", "Supremacist"];
+	
+	var ideologyStatus = [];
+	
 	//Build the Data of the Nightingale
 	var data = [];
 	
 	for (i=0; i < allThetaRadians.length; i++){
 		
-		//Choose the color/opacity of the ng slice
+		//Choose the color/opacity of the Ng slice
 		if(ideologiesCorrelates[i] > 0){
 			ngSliceColor = startColor[i]
 			ngSliceOpacity = ideologiesCorrelates[i]/6
+			ngSliceName = nameIdentStart[i]
 		} else if (ideologies[i] > 0) {
 			ngSliceColor = stopColor[i]
 			ngSliceOpacity = ideologies[i]/6
+			ngSliceName = nameIdentStop[i]
 		} else {
 			ngSliceColor = "black"
 			ngSliceOpacity = 1
+			ngSliceName = "Unknown"
 		}
 	
+		ideologyStatus.push(ngSliceName)
+	
 		if(i==0){
-			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i], areaPercentage:allRadiusPercentages[i]})
+			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i], areaPercentage:allRadiusPercentages[i], ideologyName:ngSliceName})
 		} else {
-			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i], areaPercentage:allRadiusPercentages[i]})
+			data.push({start: allThetaStart, theta: allThetaRadians[i], opacity: ngSliceOpacity + opacityChanger, color: ngSliceColor, inRadius: "0", outRadius: ${radiusScale} * allRadiusUnits[i], areaPercentage:allRadiusPercentages[i], ideologyName:ngSliceName})
 		}
 		allThetaStart += allThetaRadians[i]
 	}
-        /* DEPRICATED
-        {start: 0, theta: ${anarchismTheta}, color: "purple", inRadius: "0", outRadius: ${radiusScale * anarchismRadius}},
-        {start: (${anarchismTheta}), theta: ${authoritarianismTheta}, color: "brown", inRadius: "0", outRadius: ${radiusScale * authoritarianismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta}), theta: ${capitalismTheta}, color: "gold", inRadius: "0", outRadius: ${radiusScale * capitalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta}), theta: ${conservatismTheta}, color: "blue", inRadius: "0", outRadius: ${radiusScale * conservatismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta}), theta: ${decentralismTheta}, color: "lightblue", inRadius: "0", outRadius: ${radiusScale * decentralismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta}), theta: ${ecologismTheta}, color: "green", inRadius: "0", outRadius: ${radiusScale * ecologismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta}), theta: ${egalitarianismTheta}, color: "pink", inRadius: "0", outRadius: ${radiusScale * egalitarianismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta}), theta: ${fundamentalismTheta}, color: "maroon", inRadius: "0", outRadius: ${radiusScale * fundamentalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta}), theta: ${liberalismTheta}, color: "orange", inRadius: "0", outRadius: ${radiusScale * liberalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta}), theta: ${radicalismTheta}, color: "dimgray", inRadius: "0", outRadius: ${radiusScale * radicalismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta}), theta: ${relativismTheta}, color: "yellow", inRadius: "0", outRadius: ${radiusScale * relativismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta}), theta: ${socialismTheta}, color: "red", inRadius: "0", outRadius: ${radiusScale * socialismRadius}},
-        {start: (${anarchismTheta} + ${authoritarianismTheta} + ${capitalismTheta} + ${conservatismTheta} + ${decentralismTheta} + ${ecologismTheta} + ${egalitarianismTheta} + ${fundamentalismTheta} + ${liberalismTheta} + ${radicalismTheta} + ${relativismTheta} + ${socialismTheta}), theta: ${supremacismTheta}, color: "gray", inRadius: "0", outRadius: ${radiusScale * supremacismRadius}},
-        ];
-		*/
 
 	var arc = d3.svg.arc()
 			.innerRadius(function(d, i){return d.inRadius;})
@@ -133,9 +133,10 @@ div.tooltip {
 		        .style("opacity", .1)
 		        return tooltip
 		        	.style("visibility", "visible")
-		        	.style("background-color", this.__data__.color)
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
 		        	//.style("opacity", .2)
-		        	.text(this.__data__.areaPercentage.toFixed(2) + "%")
+		        	.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
 				;
 		    })
 		     .on('mousemove', function(d) {
@@ -153,6 +154,18 @@ div.tooltip {
 				;
 		    })
 			;
+
+<!-- Table -->
+	for(k=0; k < allRadiusPercentages.length; k++){
+		if(ideologyStatus[k] != "Unknown"){
+			d3.select("#resultsTable")
+				.append("tr").append("td")
+				.text(allRadiusPercentages[k].toFixed(2) + "% " + ideologyStatus[k])
+				.style("text-align", "right")
+				.style("font-size", "80%")
+			;
+		}
+	}
 
 <!-- Spectrums -->
 
@@ -274,6 +287,11 @@ div.tooltip {
   </div>
   
   <div id="formholder" style="margin-left: 0%;">
+  		 
+  		<table id="resultsTable" style="width: 46%; float: left;">
+			<tr><td style="text-align: right; font-size: 85%;">Based on your responses, we discovered the following:</td></tr>
+		</table>
+		<%--
 		<table id="resultsTable" style="width: 66%; float: left;">
 			<tr><td class="ideologystatus">${anarchismStatus}</td><td>anarchist</td><td>${anarchismPercent}% of your Ideology</td></tr>
 			<tr><td class="ideologystatus">${authoritarianismStatus}</td><td>authoritarian</td><td>${authoritarianismPercent}% of your Ideology</td></tr>
@@ -289,13 +307,14 @@ div.tooltip {
 			<tr><td class="ideologystatus">${socialismStatus}</td><td>socialist</td><td>${socialismPercent}% of your Ideology</td></tr>
 			<tr><td class="ideologystatus">${supremacismStatus}</td><td>supremacist</td><td>${supremacismPercent}% of your Ideology</td></tr>
 		</table>
+		--%>
 		
-	   <div id="nGraph" style="width: 320px; height: 320px; float: right;"> 
+	   <div id="nGraph" style="width: 320px; height: 320px; float: left;"> 
 	   </div> 
 	   <div class="tooltip">Errorror</div>
   </div>
   
-  <div id="spectrum holder" style="margin-top: 45%;">
+  <div id="spectrumholder" style="margin-top: 34%;">
 	  <div style="width: 13%; float: left; text-align: right; margin-top: 1.3%;">
 	  	<div class="leftIsm">Statism</div>
 	  	<div class="leftIsm">Republicanism</div>
