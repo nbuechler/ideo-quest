@@ -47,6 +47,18 @@ div.tooltipSquare {
 	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
 		.8px .8px 0 #000;
 }
+
+div.tooltipBar{
+	visibility: hidden;
+	background-color: lightblue;
+	font-size: 100%;
+	border: solid gray;
+	border-width: 1px;
+	padding: 10px;
+	position: absolute;
+	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
+		.8px .8px 0 #000;
+}
 </style>
 
 <g:javascript src="d3.v3.js" />
@@ -123,6 +135,7 @@ div.tooltipSquare {
 
 	var tooltip = d3.select("div.tooltip");
 	var tooltipSquare = d3.select("div.tooltipSquare")
+	var tooltipBar = d3.select("div.tooltipBar")
 
 	chart.selectAll("path")
 			.data(data)
@@ -460,6 +473,92 @@ div.tooltipSquare {
 		}
 	}
 
+<!-- Bar Chart -->
+	var w1C = 320;
+	var h1C = 320;
+
+	var x = d3.scale.linear()
+    	.domain([0, 1])
+ 		.range([0, w1C]);
+ 
+	var y = d3.scale.linear()
+		.domain([0, d3.max(data, function(d) { return d.areaPercentage; })])
+		.rangeRound([0, h1C]);
+
+	
+	var svg = d3.select("#barChart").append("svg:svg")
+		    .attr("width", w1C)
+		    .attr("height", h1C)
+		    .style("margin-left", "50px")
+		    .style("margin-right", "50px")
+		    //.style("background-color", "gray")
+		    ;
+	
+	svg.selectAll("rect")
+		.data(data)
+	  .enter().append("rect")
+		.attr("x", function(d, i) { return i * w1C/data.length ; })
+		.attr("y", function(d) { return h1C - y(d.areaPercentage) - .5; })
+		.attr("width", 20)
+		.attr("height", function(d) { return y(d.areaPercentage); })
+		.style("fill", function(d) { return d.color; })
+		.style("stroke", "black")
+		.style("stroke-width", "1px")
+		.style("opacity", function(d,i){
+				return d.opacity;
+				})
+		
+		.on("mouseover", function() {
+		        d3.select(this)
+		        .style("opacity", .1)
+		        return tooltipBar
+		        	.style("visibility", "visible")
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
+		        	.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
+				;
+		    })
+		    .on("mouseenter", function(d,i) {
+					d3.selectAll("." + this.__data__.ideologyName)
+					.style("opacity", .4)
+					.style("fill", this.__data__.color)
+					.style("stroke", this.__data__.color)
+					.style("background-color", this.__data__.color)
+					d3.select(this)
+					.style("opacity", .1)
+					;
+				})
+			.on("mouseleave", function(d,i) {
+				d3.selectAll("." + this.__data__.ideologyName)
+				.style("opacity", 1)
+				.style("fill", this.__data__.color)
+				.style("stroke", "black")
+				.style("background-color", "white")
+				;
+			})
+		    .on('mousemove', function(d) {
+				return tooltipBar
+		            .style("top", (d3.event.pageY + 16) + "px")
+		            .style("left", (d3.event.pageX + 16) + "px");
+			})
+		    .on("mouseout", function() {
+		        d3.select(this)
+		        .style("opacity", function(d,i){
+				return d.opacity;
+				})
+				return tooltipBar
+					.style("visibility", "hidden")
+				;
+		    })
+			;
+		
+	svg.append("line")
+		.attr("x1", 0)
+		.attr("x2", w1C)
+		.attr("y1", h1C - .5)
+		.attr("y2", h1C - .5)
+		.style("stroke", "#000");
+
 </g:javascript>
 
 <g:javascript>
@@ -503,10 +602,12 @@ div.tooltipSquare {
 				<div class="tooltipSquare">Errorror</div>
 				<div style="text-align: center;">*Rounding approximations possible</div>
 			</div>
-			<h3>Graph C</h3>
+			<h3>Bar Chart</h3>
 			<div>
-				<p>Nam enim risus, molestie et, porta ac, aliquam ac, risus.
-					nisi, eu iaculis leo purus venenatis dui.</p>
+				<div id="barChart">
+				</div>
+				<div class="tooltipBar">Errorror</div>
+				<div style="text-align: center;">*Drawn to scale</div>
 			</div>
 			<h3>Graph D</h3>
 			<div>
