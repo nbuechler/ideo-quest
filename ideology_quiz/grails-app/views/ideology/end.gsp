@@ -260,7 +260,50 @@ div.tooltip {
 				.style("opacity", 1);
 		}
 	}
+
+<!-- One Hundred -->
+	var w1H = 320;
+	var h1H = 320;
+
+<!-- Calculate whole percentages and compensate for rounding. -->
+	var squareUnit = [];
+	var roundedStore = 0;
 	
+	for (sqU = 0; sqU < allRadiusPercentages.length; sqU++){
+		if(allRadiusPercentages[sqU] != 0){
+			if((allRadiusPercentages[sqU]-(allRadiusPercentages[sqU].toFixed(0))) > 0){
+				roundedStore += (allRadiusPercentages[sqU]-(allRadiusPercentages[sqU].toFixed(0)))
+			}
+			if(roundedStore < 1){
+			squareUnit.push(allRadiusPercentages[sqU].toFixed(0))
+			}
+			if(roundedStore > 1){
+			squareUnit.push((Math.ceil(allRadiusPercentages[sqU])).toString())
+			roundedStore = 0;
+			}
+		}
+	}
+
+console.log(squareUnit)
+
+	var svg = d3.select("#onehundredGraph").append("svg:svg")
+	    .attr("width", w1H)
+	    .attr("height", h1H)
+	    .style("margin-left", "50px")
+	    .style("margin-right", "50px")
+	    .style("background-color","lightgray");
+	
+	for (oC = 0; oC < 10; oC++){
+		for(oR = 0; oR < 10; oR++){    
+			svg.append("svg:rect")
+				.attr("width", w1H/10)
+			    .attr("height", h1H/10)
+			    .style("fill", function() {
+				  return "hsl(" + Math.random() * 360 + ",100%,50%)";
+				})
+				.attr("transform", "translate(" + ((w1H/10) * oR) + "," + ((h1H/10) * oC) + ")");
+		}
+	}
 
 </g:javascript>
 
@@ -274,13 +317,10 @@ div.tooltip {
 	return true;
 	}
 
-</g:javascript>
-
-<g:javascript>
-		$(function() {
-			$( "#accordion" ).accordion({
-			});
+	$(function() {
+		$( "#accordion" ).accordion({
 		});
+	});
 </g:javascript>
 
 <body>
@@ -297,23 +337,6 @@ div.tooltip {
 					responses, we discovered the following:</td>
 			</tr>
 		</table>
-		<%-- DEPRICATED
-		<table id="resultsTable" style="width: 66%; float: left;">
-			<tr><td class="ideologystatus">${anarchismStatus}</td><td>anarchist</td><td>${anarchismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${authoritarianismStatus}</td><td>authoritarian</td><td>${authoritarianismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${capitalismStatus}</td><td>capitalist</td><td>${capitalismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${conservatismStatus}</td><td>conservative</td><td>${conservatismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${decentralismStatus}</td><td>decentralist</td><td>${decentralismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${ecologismStatus}</td><td>ecologist</td><td>${ecologismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${egalitarianismStatus}</td><td>egalitarianist</td><td>${egalitarianismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${fundamentalismStatus}</td><td>fundamentalist</td><td>${fundamentalismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${liberalismStatus}</td><td>liberal</td><td>${liberalismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${radicalismStatus}</td><td>radical</td><td>${radicalismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${relativismStatus}</td><td>relativist</td><td>${relativismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${socialismStatus}</td><td>socialist</td><td>${socialismPercent}% of your Ideology</td></tr>
-			<tr><td class="ideologystatus">${supremacismStatus}</td><td>supremacist</td><td>${supremacismPercent}% of your Ideology</td></tr>
-		</table>
-		--%>
 
 		<div id="accordion"
 			style="font-size: .6em; text-align: right; width: 460px; float: left;">
@@ -323,10 +346,10 @@ div.tooltip {
 				</div>
 				<div class="tooltip">Errorror</div>
 			</div>
-			<h3>Graph B</h3>
+			<h3>One Hundred Squares</h3>
 			<div>
-				<p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum
-					Vivamus non quam. In suscipit faucibus urna.</p>
+				<div id="onehundredGraph">
+				</div>
 			</div>
 			<h3>Graph C</h3>
 			<div>

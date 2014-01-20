@@ -431,9 +431,11 @@ class IdeologyController {
 		
 		//Build the array of Radius values as percents
 		for (def i=0; i < allRadiusPercentages.size(); i++){
-			allRadiusUnits << Math.sqrt(allRadiusPercentages[i]/allThetaRadians[i])
-			
-			//add the first, then add the first and the second, etc....
+			if(allThetaRadians[i] != 0){
+				allRadiusUnits << Math.sqrt(allRadiusPercentages[i]/allThetaRadians[i])
+			} else {
+				allRadiusUnits << 0
+			}
 		}
 		log.error(allRadiusUnits + " are allRadiusUnits")
 		
