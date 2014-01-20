@@ -35,6 +35,18 @@ div.tooltip {
 	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
 		.8px .8px 0 #000;
 }
+
+div.tooltipSquare {
+	visibility: hidden;
+	background-color: lightblue;
+	font-size: 100%;
+	border: solid gray;
+	border-width: 1px;
+	padding: 10px;
+	position: absolute;
+	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
+		.8px .8px 0 #000;
+}
 </style>
 
 <g:javascript src="d3.v3.js" />
@@ -110,6 +122,7 @@ div.tooltip {
 			;
 
 	var tooltip = d3.select("div.tooltip");
+	var tooltipSquare = d3.select("div.tooltipSquare")
 
 	chart.selectAll("path")
 			.data(data)
@@ -130,11 +143,10 @@ div.tooltip {
 		        	.style("visibility", "visible")
 		        	.style("background-color", "darkslategray")//this.__data__.color)
 		        	.style("color", "white")
-		        	//.style("opacity", .2)
 		        	.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
 				;
 		    })
-		     .on('mousemove', function(d) {
+		    .on('mousemove', function(d) {
 				return tooltip
 		            .style("top", (d3.event.pageY + 16) + "px")
 		            .style("left", (d3.event.pageX + 16) + "px");
@@ -291,6 +303,13 @@ div.tooltip {
 	
 	var colorRowAll = [];
 	var colorRow = [];
+	
+	var ideoRowAll = [];
+	var ideoRow = [];
+	
+	var percRowAll = [];
+	var percRow = [];
+	
 	var colorCounter = 0;
 	for(cSU = 0; cSU < squareUnit.length; cSU++){
 	
@@ -307,11 +326,26 @@ div.tooltip {
 			<!-- Put colors in a row until it is full -->
 			if(colorRow.length < 10){
 			colorRow.push(ideOrIdeCor[cSU]);
+			
+			ideoRow.push(ideologyStatus[cSU]);
+			percRow.push(allRadiusPercentages[cSU]);
+			
 			} else if (colorRow.length == 10){
 			<!-- Put the full row with all the others, and then empty it; and then push the color-->
 			colorRowAll.push(colorRow)
+			
+			ideoRowAll.push(ideoRow);
+			percRowAll.push(percRow);
+			
 			var colorRow = [];
+			
+			var ideoRow = [];
+			var percRow = [];
+			
 			colorRow.push(ideOrIdeCor[cSU]);
+			
+			ideoRow.push(ideologyStatus[cSU]);
+			percRow.push(allRadiusPercentages[cSU]);
 			}
 		} 
 	}
@@ -319,8 +353,14 @@ div.tooltip {
 			<!-- If it is an x number short, add more of the last color until full -->
 			for(addMore = 0; addMore < colorCounter; addMore++){
 				colorRow.push(ideOrIdeCor[startColor.length-1])
+				
+				ideoRow.push(ideologyStatus[startColor.length-1]);
+				percRow.push(allRadiusPercentages[startColor.length-1]);
 			}
 			colorRowAll.push(colorRow)
+			
+			ideoRowAll.push(ideoRow);
+			percRowAll.push(percRow);
 		}
 	
 	var svg = d3.select("#onehundredGraph").append("svg:svg")
@@ -328,20 +368,65 @@ div.tooltip {
 	    .attr("height", h1H)
 	    .style("margin-left", "50px")
 	    .style("margin-right", "50px")
-	    .style("background-color","lightgray");
+	    .style("background-color", "white");
 	
 	<!-- Choose the row to color -->
 	for (oC = 0; oC < 10; oC++){
 		var theColorRow = colorRowAll[oC];
+		
+		var theIdeoRow = ideoRowAll[oC];
+		var thePercRow = percRowAll[oC];
 	<!-- Choose the cell of the row to color -->
 		for(oR = 0; oR < 10; oR++){    
 			svg.append("svg:rect")
+				.data([{color: theColorRow[oR], squareName: theIdeoRow[oR], squarePercentage: thePercRow[oR]}])
 				.attr("width", w1H/10)
 			    .attr("height", h1H/10)
+			    .attr("class", theIdeoRow[oR])
 			    .style("fill", theColorRow[oR])
 			    .style("stroke-width", "1px")
 			    .style("stroke", "black")
-				.attr("transform", "translate(" + ((w1H/10) * oR) + "," + ((h1H/10) * oC) + ")");
+				.attr("transform", "translate(" + ((w1H/10) * oR) + "," + ((h1H/10) * oC) + ")")
+				
+				.on("mouseover", function(d,i) {
+					d3.select(this)
+					return tooltipSquare
+			        	.style("visibility", "visible")
+			        	.style("background-color", "darkslategray")//this.__data__.color)
+			        	.style("color", "white")
+			        	.text(this.__data__.squarePercentage.toFixed(2) + "% " + this.__data__.squareName)
+			        	;
+				})
+				.on('mousemove', function(d) {
+					return tooltipSquare
+			            .style("top", (d3.event.pageY + 16) + "px")
+			            .style("left", (d3.event.pageX + 16) + "px")
+			            ;
+				})
+				.on("mouseout", function() {
+			        d3.select(this)
+			        .style("opacity", 1)
+				    return tooltipSquare
+						.style("visibility", "hidden")
+					;
+		    	})
+		    	.on("mouseenter", function(d,i) {
+					d3.selectAll("." + this.__data__.squareName)
+					.style("opacity", .4)
+					.style("fill", this.__data__.color)
+					.style("stroke", this.__data__.color)
+					d3.select(this)
+					.style("opacity", .1)
+					;
+				})
+				.on("mouseleave", function(d,i) {
+					d3.selectAll("." + this.__data__.squareName)
+					.style("opacity", 1)
+					.style("fill", this.__data__.color)
+					.style("stroke", "black")
+					;
+				})
+				;
 		}
 	}
 
@@ -391,6 +476,7 @@ div.tooltip {
 			<div>
 				<div id="onehundredGraph">
 				</div>
+				<div class="tooltipSquare">Errorror</div>
 				<div style="text-align: center;">*Rounding approximations possible</div>
 			</div>
 			<h3>Graph C</h3>
