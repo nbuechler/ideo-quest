@@ -41,7 +41,7 @@ div.tooltip {
 
 </head>
 
-<g:set var="radiusScale" value="${30}" />
+<g:set var="radiusScale" value="${25}" />
 
 <g:javascript>
 
@@ -268,6 +268,8 @@ div.tooltip {
 <!-- Calculate whole percentages and compensate for rounding. -->
 	var squareUnit = [];
 	var roundedStore = 0;
+	var squareUnitSum = 0;
+	
 	
 	for (sqU = 0; sqU < allRadiusPercentages.length; sqU++){
 		if(allRadiusPercentages[sqU] != 0){
@@ -280,12 +282,47 @@ div.tooltip {
 			if(roundedStore > 1){
 			squareUnit.push((Math.ceil(allRadiusPercentages[sqU])).toString())
 			roundedStore = 0;
+			
 			}
+		} else {
+			squareUnit.push("0")
 		}
 	}
-
-console.log(squareUnit)
-
+	
+	var colorRowAll = [];
+	var colorRow = [];
+	var colorCounter = 0;
+	for(cSU = 0; cSU < squareUnit.length; cSU++){
+	
+		<!-- Is it the ideology or the ideologyCorrelate? -->
+		if(ideologies[cSU] >= 0){
+			ideOrIdeCor = startColor
+		}
+		if(ideologiesCorrelates[cSU] == 0){
+			ideOrIdeCor = stopColor
+		}
+		
+		for(cIdeologyU = 0; cIdeologyU < squareUnit[cSU]; cIdeologyU++){
+			colorCounter += 1
+			<!-- Put colors in a row until it is full -->
+			if(colorRow.length < 10){
+			colorRow.push(ideOrIdeCor[cSU]);
+			} else if (colorRow.length == 10){
+			<!-- Put the full row with all the others, and then empty it; and then push the color-->
+			colorRowAll.push(colorRow)
+			var colorRow = [];
+			colorRow.push(ideOrIdeCor[cSU]);
+			}
+		} 
+	}
+	if (colorCounter <= 100) {
+			<!-- If it is an x number short, add more of the last color until full -->
+			for(addMore = 0; addMore < colorCounter; addMore++){
+				colorRow.push(ideOrIdeCor[startColor.length-1])
+			}
+			colorRowAll.push(colorRow)
+		}
+	
 	var svg = d3.select("#onehundredGraph").append("svg:svg")
 	    .attr("width", w1H)
 	    .attr("height", h1H)
@@ -293,14 +330,17 @@ console.log(squareUnit)
 	    .style("margin-right", "50px")
 	    .style("background-color","lightgray");
 	
+	<!-- Choose the row to color -->
 	for (oC = 0; oC < 10; oC++){
+		var theColorRow = colorRowAll[oC];
+	<!-- Choose the cell of the row to color -->
 		for(oR = 0; oR < 10; oR++){    
 			svg.append("svg:rect")
 				.attr("width", w1H/10)
 			    .attr("height", h1H/10)
-			    .style("fill", function() {
-				  return "hsl(" + Math.random() * 360 + ",100%,50%)";
-				})
+			    .style("fill", theColorRow[oR])
+			    .style("stroke-width", "1px")
+			    .style("stroke", "black")
 				.attr("transform", "translate(" + ((w1H/10) * oR) + "," + ((h1H/10) * oC) + ")");
 		}
 	}
@@ -345,11 +385,13 @@ console.log(squareUnit)
 				<div id="nGraph">
 				</div>
 				<div class="tooltip">Errorror</div>
+				<div style="text-align: center;">*Drawn to scale</div>
 			</div>
-			<h3>One Hundred Squares</h3>
+			<h3>Ein Hundert Ideen</h3>
 			<div>
 				<div id="onehundredGraph">
 				</div>
+				<div style="text-align: center;">*Rounding approximations possible</div>
 			</div>
 			<h3>Graph C</h3>
 			<div>
