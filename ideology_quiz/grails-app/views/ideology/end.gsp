@@ -146,6 +146,24 @@ div.tooltipSquare {
 		        	.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
 				;
 		    })
+		    .on("mouseenter", function(d,i) {
+					d3.selectAll("." + this.__data__.ideologyName)
+					.style("opacity", .4)
+					.style("fill", this.__data__.color)
+					.style("stroke", this.__data__.color)
+					.style("background-color", this.__data__.color)
+					d3.select(this)
+					.style("opacity", .1)
+					;
+				})
+			.on("mouseleave", function(d,i) {
+				d3.selectAll("." + this.__data__.ideologyName)
+				.style("opacity", 1)
+				.style("fill", this.__data__.color)
+				.style("stroke", "black")
+				.style("background-color", "white")
+				;
+			})
 		    .on('mousemove', function(d) {
 				return tooltip
 		            .style("top", (d3.event.pageY + 16) + "px")
@@ -166,13 +184,23 @@ div.tooltipSquare {
 	for(k=0; k < allRadiusPercentages.length; k++){
 		if(ideologyStatus[k] != "Unknown"){
 			d3.select("#resultsTable")
-				.append("tr").append("td")
-				.text(allRadiusPercentages[k].toFixed(2) + "% " + ideologyStatus[k])
+				.append("tr").attr("class", ideologyStatus[k])
+				;
+			d3.select("." + ideologyStatus[k]).append("td")
+				.text(allRadiusPercentages[k].toFixed(2) + "%")
 				.style("text-align", "right")
-				.style("font-size", "80%")
-			;
+				.style("font-size", "100%")
+				;
+			d3.select("." + ideologyStatus[k]).append("td")
+			.text(ideologyStatus[k])
+			.style("text-align", "left")
+			.style("font-size", "100%")
+				;
 		}
 	}
+	
+	d3.select("#resultsTable")
+		.style("margin-top", 4.3 + "%")
 
 <!-- Spectrums -->
 
@@ -288,10 +316,10 @@ div.tooltipSquare {
 			if((allRadiusPercentages[sqU]-(allRadiusPercentages[sqU].toFixed(0))) > 0){
 				roundedStore += (allRadiusPercentages[sqU]-(allRadiusPercentages[sqU].toFixed(0)))
 			}
-			if(roundedStore < 1){
+			if(roundedStore < 2){
 			squareUnit.push(allRadiusPercentages[sqU].toFixed(0))
 			}
-			if(roundedStore > 1){
+			if(roundedStore > 2){
 			squareUnit.push((Math.ceil(allRadiusPercentages[sqU])).toString())
 			roundedStore = 0;
 			
@@ -415,6 +443,7 @@ div.tooltipSquare {
 					.style("opacity", .4)
 					.style("fill", this.__data__.color)
 					.style("stroke", this.__data__.color)
+					.style("background-color", this.__data__.color)
 					d3.select(this)
 					.style("opacity", .1)
 					;
@@ -424,6 +453,7 @@ div.tooltipSquare {
 					.style("opacity", 1)
 					.style("fill", this.__data__.color)
 					.style("stroke", "black")
+					.style("background-color", "white")
 					;
 				})
 				;
@@ -453,14 +483,8 @@ div.tooltipSquare {
 	<div class="body">
 		<a href="${contextpath }/ideology_quiz/ideology/index">Home</a>
 	</div>
-
 	<div id="formholder" style="margin-left: 0%;">
-
 		<table id="resultsTable" style="width: 46%; float: left;">
-			<tr>
-				<td style="text-align: right; font-size: 85%;">Based on your
-					responses, we discovered the following:</td>
-			</tr>
 		</table>
 
 		<div id="accordion"
