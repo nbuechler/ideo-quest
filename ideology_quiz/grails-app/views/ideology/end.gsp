@@ -46,8 +46,9 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 		.8px .8px 0 #000;
 }
 
-div.ttNG {
+div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 	visibility: hidden;
+	z-index: 9999;
 	background-color: lightblue;
 	font-size: 100%;
 	border: solid gray;
@@ -506,7 +507,7 @@ div.ttNG {
 		.data(data)
 	  .enter().append("rect")
 		.attr("x", function(d, i) { return i * w1C/data.length ; })
-		.attr("y", function(d) { return h1C - y(d.areaPercentage) - .5; })
+		.attr("y", function(d) { return h1C - y(d.areaPercentage) + .5; })
 		.attr("width", 20)
 		.attr("height", function(d) { return y(d.areaPercentage); })
 		.style("fill", function(d) { return d.color; })
@@ -683,7 +684,7 @@ div.ttNG {
 		        	.style("visibility", "visible")
 		        	.style("background-color", "darkslategray")//this.__data__.color)
 		        	.style("color", "white")
-		        	.style("margin-top", this.offsetTop -370 + "px")
+		        	.style("margin-top", this.offsetTop -400 + "px")
 		        	.style("margin-left", this.offsetLeft - 200 + "px")
 		        	.text("Learn more about " + this.lastChild.innerHTML + " by clicking here!")
 		        	.style("font-size", "80%")
@@ -698,7 +699,7 @@ div.ttNG {
 		    })
 			;
 
-/*
+
 	$(function() {
 		$( "#openingMessage" ).dialog({
 			modal: true,
@@ -710,13 +711,16 @@ div.ttNG {
 			}
 		});
 	});
-*/
+
  
 </g:javascript>
 
 <g:javascript>
 
 	var ttNG = d3.select("div.ttNG");
+	var ttOH = d3.select("div.ttOH");
+	var ttBC = d3.select("div.ttBC");
+	var ttSP = d3.select("div.ttSP");
 
 	d3.selectAll("#ttNGQuestion")
 		.on("mouseover", function() {
@@ -725,17 +729,82 @@ div.ttNG {
 		        	.style("visibility", "visible")
 		        	.style("background-color", "darkslategray")//this.__data__.color)
 		        	.style("color", "white")
-		        	.style("margin-top", this.offsetTop - 800 + "px")
+		        	.style("margin-top", this.offsetTop - 760 + "px")
 		        	.style("margin-left", this.offsetLeft - 1350 + "px")
 		        	.style("font-size", "100%")
 		        	.style("width", "300px")
 		        	.style("height", "66%")
-		        	//.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
 				;
 		    })
 		.on("mouseout", function() {
 		        d3.select(this)
 				return ttNG
+					.style("visibility", "hidden")
+				;
+		    })
+			;
+			
+	d3.selectAll("#ttOHQuestion")
+		.on("mouseover", function() {
+		        d3.select(this)
+		        return ttOH
+		        	.style("visibility", "visible")
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
+		        	.style("margin-top", this.offsetTop - 842.5 + "px")
+		        	.style("margin-left", this.offsetLeft - 1350 + "px")
+		        	.style("font-size", "100%")
+		        	.style("width", "300px")
+		        	.style("height", "66%")
+				;
+		    })
+		.on("mouseout", function() {
+		        d3.select(this)
+				return ttOH
+					.style("visibility", "hidden")
+				;
+		    })
+			;
+			
+	d3.selectAll("#ttBCQuestion")
+		.on("mouseover", function() {
+		        d3.select(this)
+		        return ttBC
+		        	.style("visibility", "visible")
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
+		        	.style("margin-top", this.offsetTop - 925 + "px")
+		        	.style("margin-left", this.offsetLeft - 1350 + "px")
+		        	.style("font-size", "100%")
+		        	.style("width", "300px")
+		        	.style("height", "66%")
+				;
+		    })
+		.on("mouseout", function() {
+		        d3.select(this)
+				return ttBC
+					.style("visibility", "hidden")
+				;
+		    })
+			;
+	
+	d3.selectAll("#ttSPQuestion")
+		.on("mouseover", function() {
+		        d3.select(this)
+		        return ttSP
+		        	.style("visibility", "visible")
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
+		        	.style("margin-top", this.offsetTop - 1012 + "px")
+		        	.style("margin-left", this.offsetLeft - 1350 + "px")
+		        	.style("font-size", "100%")
+		        	.style("width", "300px")
+		        	.style("height", "66%")
+				;
+		    })
+		.on("mouseout", function() {
+		        d3.select(this)
+				return ttSP
 					.style("visibility", "hidden")
 				;
 		    })
@@ -802,21 +871,111 @@ div.ttNG {
 			</div>
 			<h3>Ein Hundert Ideen</h3>
 			<div>
+				<p id="ttOHQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="onehundredGraph">
+				</div>
+				<div class="ttOH">
+					<div>
+						<div style="float: left;">
+							<b>About the Ein Hundert Graph</b>
+						</div>
+						<br>
+						<br>
+						<div style="float: left;">
+							<b>One Block</b> indicates roughly one percent of ideology
+						</div>
+						<div style="float: left;">
+							<b>Highlighted Group</b> rough total percentage of ideology
+						</div>
+						<div style="float: left;">
+							<b>Color</b> indicates the type of ideology
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<div style="padding-top: 10%;">
+						<b>History</b> 
+					</div>
+					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					</div>
 				</div>
 				<div class="tooltipSquare">Errorror</div>
 				<div style="text-align: center;">*Rounding approximations possible</div>
 			</div>
 			<h3>Bar Chart</h3>
 			<div>
+				<p id="ttBCQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="barChart">
+				</div>
+				<div class="ttBC">
+					<div>
+						<div style="float: left;">
+							<b>About the Nightingale Graph</b>
+						</div>
+						<br>
+						<br>
+						<div style="float: left;">
+							<b>Opacity</b> indicates the intesity of ideology
+						</div>
+						<div style="float: left;">
+							<b>X-Axis</b> list from top-bottom(table) = left-right
+						</div>
+						<div style="float: left;">
+							<b>Y-Axis</b> indicates the percentage of the ideolgy
+						</div>
+						<div style="float: left;">
+							<b>Color</b> indicates the type of ideology
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<div style="padding-top: 10%;">
+						<b>History</b> 
+					</div>
+					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					</div>
 				</div>
 				<div class="tooltipBar">Errorror</div>
 				<div style="text-align: center;">*Drawn to scale</div>
 			</div>
 			<h3>Scatter Plot</h3>
 			<div>
+				<p id="ttSPQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="scatterPlot">
+				</div>
+				<div class="ttSP">
+					<div>
+						<div style="float: left;">
+							<b>About the Scatter Plot</b>
+						</div>
+						<br>
+						<br>
+						<div style="float: left;">
+							<b>Plot Size</b> indicates the percentage of ideology
+						</div>
+						<div style="float: left;">
+							<b>Opacity</b> indicates the intesity of ideology
+						</div>
+						<div style="float: left;">
+							<b>X-Axis</b> list from top-bottom(table) = left-right
+						</div>
+						<div style="float: left;">
+							<b>Y-Axis</b> indicates the number of points of the ideolgy
+						</div>
+						<div style="float: left;">
+							<b>Color</b> indicates the type of ideology
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<div style="padding-top: 10%;">
+						<b>History</b> 
+					</div>
+					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					</div>
 				</div>
 				<div class="tooltipPlot">Errorror</div>
 				<div style="text-align: center;">*Drawn to scale</div>
@@ -863,7 +1022,7 @@ div.ttNG {
 		</div>
 	</div>
 	
-	<div id="openingMessage" title="Let the Ideoquest Begin!" width="500px">
+	<div id="openingMessage" title="Let the Ideoquest Begin!">
 	 
 	<p style="font-size: 80%;">
 		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
