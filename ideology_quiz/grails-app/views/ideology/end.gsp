@@ -6,6 +6,18 @@
 <title>Results</title>
 
 <style>
+#instructions {
+	margin: 2.5%;
+	padding: 2.5%;
+	background-color: aliceblue;
+	font-size: 80%;
+}
+
+.ui-dialog-title {
+	font-size: 95%;
+	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
+		.8px .8px 0 #000;
+}
 
 .ism {
 	margin-top: 16%;
@@ -673,6 +685,18 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 		    })
 			;
 
+	$(function() {
+		$( "#openingMessage" ).dialog({
+			modal: true,
+			width: "500px",
+			buttons: {
+				Ok: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	});
+
 </g:javascript>
 
 <body>
@@ -680,7 +704,14 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 	<div class="body">
 		<a href="${contextpath }/ideology_quiz/ideology/index">Home</a>
 	</div>
-	<div id="formholder" style="margin-left: 0%;">
+	<div id="instructions">
+	Welcome to your dashboard where you will find all the information related to our
+	system's analysis of how you answered the questions. We have included a table and a
+	variety of visualizations to spark your interest. Any place you find a --insert image 
+	here --,you can learn more about the specific graph. If you have additional questions,
+	please see our <a href="#">FAQ.</a>
+	</div>
+	<div id="actionHolder" style="margin-left: 0%;">
 		<table id="resultsTable" style="width: 25%; float: left; margin-left: 10%;">
 		</table>
 
@@ -754,6 +785,22 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 			<div class="ism"><a href="#">Socialism</a></div>
 			<div class="ism"><a href="#">Supremacism</a></div>
 		</div>
+	</div>
+	
+	<div id="openingMessage" title="Let the Ideoquest Begin!" width="500px">
+	 
+	<p style="font-size: 80%;">
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		Congrats on taking your first step on understanding ideology!
+		For help, <b>remember to read the instructions</b>
+		at the top of the page.
+	</p>
+	<br>
+	<p style="text-align: right; font-size: 80%;">Good luck!
+	</p>
+	<p style="text-align: right; font-size: 80%;">-The Ideoquest Team
+	</p>
+	
 	</div>
 </body>
 </html>

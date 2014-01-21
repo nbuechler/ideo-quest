@@ -492,9 +492,13 @@ th.desc a {
 	background: #ffffff;
 }
 
+/* Uncomment to have hover effect, not recommended.
+
 th:hover, tr:hover {
 	background: #D4EEFF;
 }
+
+*/
 
 /* PAGINATION */
 
