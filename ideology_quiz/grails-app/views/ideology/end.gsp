@@ -6,12 +6,8 @@
 <title>Results</title>
 
 <style>
-.leftIsm {
-	margin-top: 16%;
-	font-size: 72%;
-}
 
-.rightIsm {
+.ism {
 	margin-top: 16%;
 	font-size: 72%;
 }
@@ -24,43 +20,8 @@
 	font-size: 80%;
 }
 
-div.tooltip {
-	visibility: hidden;
-	background-color: lightblue;
-	font-size: 100%;
-	border: solid gray;
-	border-width: 1px;
-	padding: 10px;
-	position: absolute;
-	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
-		.8px .8px 0 #000;
-}
 
-div.tooltipSquare {
-	visibility: hidden;
-	background-color: lightblue;
-	font-size: 100%;
-	border: solid gray;
-	border-width: 1px;
-	padding: 10px;
-	position: absolute;
-	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
-		.8px .8px 0 #000;
-}
-
-div.tooltipBar{
-	visibility: hidden;
-	background-color: lightblue;
-	font-size: 100%;
-	border: solid gray;
-	border-width: 1px;
-	padding: 10px;
-	position: absolute;
-	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
-		.8px .8px 0 #000;
-}
-
-div.tooltipPlot{
+div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGeneral {
 	visibility: hidden;
 	background-color: lightblue;
 	font-size: 100%;
@@ -146,9 +107,10 @@ div.tooltipPlot{
 			;
 
 	var tooltip = d3.select("div.tooltip");
-	var tooltipSquare = d3.select("div.tooltipSquare")
-	var tooltipBar = d3.select("div.tooltipBar")
-	var tooltipPlot = d3.select("div.tooltipPlot")
+	var tooltipSquare = d3.select("div.tooltipSquare");
+	var tooltipBar = d3.select("div.tooltipBar");
+	var tooltipPlot = d3.select("div.tooltipPlot");
+	var tooltipGeneral = d3.select("div.tooltipGeneral");
 
 	chart.selectAll("path")
 			.data(data)
@@ -313,8 +275,8 @@ div.tooltipPlot{
 			.attr("transform", "translate(" + (337 + (55 * (ideologies[i-1])) + ((5/6) * (ideologies[i-1]))) + "," + nextRectHeight + ")")
 			/*
 			For reference
-			335 translation is half of the whole spectrum, or the zero position of the rightIsms
-			505 translation is whole of the whole spectrum, or the one position of the rightIsms
+			335 translation is half of the whole spectrum, or the zero position of the isms
+			505 translation is whole of the whole spectrum, or the one position of the isms
 			
 			w/2 will cover distance from zero position to one position
 			w/4 will cover distance from zero position to half the distance between zero position and one postion
@@ -687,6 +649,30 @@ div.tooltipPlot{
 		$( "#accordion" ).accordion({
 		});
 	});
+	
+	d3.selectAll(".ism")
+		.on("mouseover", function() {
+		console.log(this)
+		        d3.select(this)
+		        return tooltipGeneral
+		        	.style("visibility", "visible")
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
+		        	.style("margin-top", this.offsetTop - 200 + "px")
+		        	.style("margin-left", this.offsetLeft - 200 + "px")
+		        	.text("Learn more about " + this.lastChild.innerHTML + " by clicking here!")
+		        	.style("font-size", "80%")
+		        	//.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
+				;
+		    })
+		.on("mouseout", function() {
+		        d3.select(this)
+				return tooltipGeneral
+					.style("visibility", "hidden")
+				;
+		    })
+			;
+
 </g:javascript>
 
 <body>
@@ -732,39 +718,41 @@ div.tooltipPlot{
 
 	</div>
 
+
+	<div class="tooltipGeneral">Errorror</div>
 	<div id="spectrumholder" style="margin-top: 40%;">
 		<div
 			style="width: 13%; float: left; text-align: right; margin-top: 1.3%;">
-			<div class="leftIsm">Statism</div>
-			<div class="leftIsm">Republicanism</div>
-			<div class="leftIsm">Marxism</div>
-			<div class="leftIsm">Progressivism</div>
-			<div class="leftIsm">Centralism</div>
-			<div class="leftIsm">Anthropocentrism</div>
-			<div class="leftIsm">Elitism</div>
-			<div class="leftIsm">Pluralism</div>
-			<div class="leftIsm">Facism</div>
-			<div class="leftIsm">Loyalism</div>
-			<div class="leftIsm">Ethnocentrism</div>
-			<div class="leftIsm">Corporatism</div>
-			<div class="leftIsm">Democratism</div>
+			<div class="ism"><a href="#">Statism</a></div>
+			<div class="ism"><a href="#">Republicanism</a></div>
+			<div class="ism"><a href="#">Marxism</a></div>
+			<div class="ism"><a href="#">Progressivism</a></div>
+			<div class="ism"><a href="#">Centralism</a></div>
+			<div class="ism"><a href="#">Anthropocentrism</a></div>
+			<div class="ism"><a href="#">Elitism</a></div>
+			<div class="ism"><a href="#">Pluralism</a></div>
+			<div class="ism"><a href="#">Facism</a></div>
+			<div class="ism"><a href="#">Loyalism</a></div>
+			<div class="ism"><a href="#">Ethnocentrism</a></div>
+			<div class="ism"><a href="#">Corporatism</a></div>
+			<div class="ism"><a href="#">Democratism</a></div>
 		</div>
 		<div id="onethreeGraph"
 			style="width: 70%; margin-right: 15%; margin-left: 15%;"></div>
 		<div style="width: 13%; float: right; margin-top: -55.3%;">
-			<div class="rightIsm">Anarchism</div>
-			<div class="rightIsm">Authoritarianism</div>
-			<div class="rightIsm">Capitalism</div>
-			<div class="rightIsm">Conservatism</div>
-			<div class="rightIsm">Decentralism</div>
-			<div class="rightIsm">Ecologism</div>
-			<div class="rightIsm">Egalitarianism</div>
-			<div class="rightIsm">Fundamentalism</div>
-			<div class="rightIsm">Liberalism</div>
-			<div class="rightIsm">Radicalism</div>
-			<div class="rightIsm">Relativism</div>
-			<div class="rightIsm">Socialism</div>
-			<div class="rightIsm">Supremacism</div>
+			<div class="ism"><a href="#">Anarchism</a></div>
+			<div class="ism"><a href="#">Authoritarianism</a></div>
+			<div class="ism"><a href="#">Capitalism</a></div>
+			<div class="ism"><a href="#">Conservatism</a></div>
+			<div class="ism"><a href="#">Decentralism</a></div>
+			<div class="ism"><a href="#">Ecologism</a></div>
+			<div class="ism"><a href="#">Egalitarianism</a></div>
+			<div class="ism"><a href="#">Fundamentalism</a></div>
+			<div class="ism"><a href="#">Liberalism</a></div>
+			<div class="ism"><a href="#">Radicalism</a></div>
+			<div class="ism"><a href="#">Relativism</a></div>
+			<div class="ism"><a href="#">Socialism</a></div>
+			<div class="ism"><a href="#">Supremacism</a></div>
 		</div>
 	</div>
 </body>
