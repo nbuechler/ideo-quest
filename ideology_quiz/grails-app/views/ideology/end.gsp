@@ -684,7 +684,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 		        	.style("visibility", "visible")
 		        	.style("background-color", "darkslategray")//this.__data__.color)
 		        	.style("color", "white")
-		        	.style("margin-top", this.offsetTop -400 + "px")
+		        	.style("margin-top", this.offsetTop -370 + "px")
 		        	.style("margin-left", this.offsetLeft - 200 + "px")
 		        	.text("Learn more about " + this.lastChild.innerHTML + " by clicking here!")
 		        	.style("font-size", "80%")
@@ -815,7 +815,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 <body>
 
 	<div class="body">
-		<a href="${contextpath }/ideology_quiz/ideology/index">Home</a>
+		<a class="navbar" href="${contextpath }/ideology_quiz/ideology/index">Home</a>
 	</div>
 	<div id="instructions">
 		<p>Welcome to your dashboard where you will find all the information related to our
@@ -864,9 +864,33 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 					<br>
 					<br>
 					<div style="padding-top: 10%;">
-						<b>History</b> 
+						<b>Concept</b> 
 					</div>
-					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					<div>
+					-Via Wikipedia -
+					</div>
+					<div>
+					http://en.wikipedia.org/wiki/Florence_Nightingale
+					</div>
+					<br>
+					<br>
+					<div>
+					</div>
+					<div>
+					Indeed, Nightingale is described as "a true pioneer in the 
+					graphical representation of statistics", and is credited with 
+					developing a form of the pie chart now known as the polar area
+					 diagram, or occasionally the Nightingale rose diagram, 
+					 equivalent to a modern circular histogram, to illustrate
+					  seasonal sources of patient mortality in the military field 
+					  hospital she managed. Nightingale called a compilation of 
+					  such diagrams a "coxcomb", but later that term would 
+					  frequently be used for the individual diagrams. She made 
+					  extensive use of coxcombs to present reports on the nature 
+					  and magnitude of the conditions of medical care in the 
+					  Crimean War to Members of Parliament and civil servants who
+					   would have been unlikely to read or understand traditional 
+					   statistical reports.
 					</div>
 				</div>
 				<div class="tooltip">Errorror</div>
@@ -898,9 +922,17 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 					<br>
 					<br>
 					<div style="padding-top: 10%;">
-						<b>History</b> 
+						<b>Concept</b> 
 					</div>
-					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					<br>
+					<br>
+					<div>
+					The grid depicts a different variety of visualizing area,
+					similar to that of the Nightingale Graph. "Ein Hundert Ideen"
+					translates into "One Hundred Ideas" and we believe that this
+					notion of ideas adequately depicts the relationship each square 
+					truly has with the overall semblance of ideology. Afterall, each square
+					is only a piece of the overall sum of 100.
 					</div>
 				</div>
 				<div class="tooltipSquare">Errorror</div>
@@ -935,9 +967,16 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 					<br>
 					<br>
 					<div style="padding-top: 10%;">
-						<b>History</b> 
+						<b>Concept</b> 
 					</div>
-					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					<br>
+					<br>
+					<div>
+					A simple bar chart to indicate information in a conventional
+					manner the information. While simple, still quite useful due to the clear
+					understanding most people have of bar charts. The y-axis scales
+					its upper bound equal to and based on the greatest y-statistic.
+					This is to prevent clipping of important visual knowledge.				
 					</div>
 				</div>
 				<div class="tooltipBar">Errorror</div>
@@ -975,9 +1014,16 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 					<br>
 					<br>
 					<div style="padding-top: 10%;">
-						<b>History</b> 
+						<b>Concept</b> 
 					</div>
-					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					<br>
+					<br>
+					<div>A simple scatter plot  to indicate information in a 
+					conventional manner the information. While simple, still quite useful 
+					due to the clear understanding most people have of scatter plots. 
+					The y-axis and x-axis scale their bounds relative and equal to 
+					the greates and lowest statistics, and additionally scale based on the
+					radius. This is to prevent clipping of important visual knowledge.			
 					</div>
 				</div>
 				<div class="tooltipPlot">Errorror</div>
@@ -1023,6 +1069,15 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 			<div class="ism"><a href="#">Socialism</a></div>
 			<div class="ism"><a href="#">Supremacism</a></div>
 		</div>
+		<div id="instructions" style="margin-top: -5%;">
+		<p>Thank you for learning and taking the time to understand more, but the journey 
+		isn't over yet!	If you haven't <a href="#">created a user account</a> yet, you may be missing out
+		on all of the fun and exciting features, from customized social networks to in-depth readings
+		about your combination of ideology.
+		</p>
+		<p></p>
+		<p style="float: left"><i><b>And the best part is that the experience is free! <a href="#">Click here to create a user account.</a></b></i></p>
+	</div>
 	</div>
 	
 	<div id="openingMessage" title="Let the Ideoquest Begin!">

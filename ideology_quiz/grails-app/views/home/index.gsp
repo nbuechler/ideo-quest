@@ -22,8 +22,8 @@
 <body>
 
 	<div class="body">
-		<a href="${contextpath }/ideology_quiz/reading/index">Reading</a> <a
-			href="${contextpath }/ideology_quiz/ideology/index">Ideology</a> This
+		<a class="navbar" href="${contextpath }/ideology_quiz/reading/index">Reading</a>
+		<a class="navbar" href="${contextpath }/ideology_quiz/ideology/index">Ideology</a> This
 		is going to be the landing page for the Home page...
 	</div>
 

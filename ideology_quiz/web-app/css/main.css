@@ -65,7 +65,9 @@ padding-left: 5%;
 		}
 
 #ideologyLogo {
-	background-color: #8686a1;
+	background-color: white;
+	border-bottom: 20px solid lightblue;
+	padding: 2%;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -104,6 +106,11 @@ img {
 	border: 0;
 }
 
+.navbar {
+	background-color: lightblue;
+	padding: 1%;
+}
+
 /* GENERAL */
 
 #grailsLogo a {
@@ -125,7 +132,7 @@ img {
 }
 
 .footer {
-	background: #8686a1;
+	background: lightblue;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
