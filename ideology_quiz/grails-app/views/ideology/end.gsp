@@ -94,7 +94,7 @@ div.tooltipPlot{
 	var ideologies = ${ideologies};
 	
 	var startColor = ["LightSlateGray", "GreenYellow", "Tomato", "Aqua", "GoldenRod", "DarkRed", "Indigo", "LightSeaGreen", "Sienna", "MediumOrchid", "Fuchsia", "ForestGreen", "GoldenRod"];
-	var stopColor = ["purple", "brown","gold","blue","lightblue","green","pink","maroon","orange","dimgray","yellow","red","gray"];
+	var stopColor = ["purple", "brown","sandybrown","blue","lightblue","green","pink","maroon","orange","dimgray","DarkKhaki","red","gray"];
 	
 	var nameIdentStart = ["Statist", "Republican","Marxist","Progressive","Centralist","Anthropocentralist","Elitist","Pluralist","Facist","Loyalist","Ethnocentralist","Corporatist","Democrat"];
 	var nameIdentStop = ["Anarchist", "Authoritarian", "Capitalist", "Conservative", "Decentralist", "Ecologist", "Egalitarianist", "Fundamentalist", "Liberal", "Radical", "Relativist", "Socialist", "Supremacist"];
@@ -207,6 +207,11 @@ div.tooltipPlot{
 			;
 
 <!-- Table -->
+	
+	<!-- Count the rows skipped and the distance to add -->
+	rowNeeded = 0;
+	
+	<!-- Build the table -->
 	for(k=0; k < allRadiusPercentages.length; k++){
 		if(ideologyStatus[k] != "Unknown"){
 			d3.select("#resultsTable")
@@ -222,11 +227,13 @@ div.tooltipPlot{
 			.style("text-align", "left")
 			.style("font-size", "100%")
 				;
+		} else {
+			rowNeeded += 1;
 		}
 	}
 	
 	d3.select("#resultsTable")
-		.style("margin-top", 4.3 + "%")
+		.style("margin-top", (( 2.15 * rowNeeded) + 4.3) + "%")
 
 <!-- Spectrums -->
 
@@ -604,9 +611,10 @@ div.tooltipPlot{
 			+ d3.max(data, function(d) { return d.outRadius/2; }); })
 		.attr("r", function(d) { return d.areaPercentage; })
 		.attr("width", 20)
-		.style("fill", function(d) { return d.color; })
-		.style("stroke", "black")
-		.style("stroke-width", "1px")
+		.style("fill", "gray")
+		.style("fill-opacity", .2)
+		.style("stroke", function(d) { return d.color; })
+		.style("stroke-width", "2px")
 		.style("opacity", function(d,i){
 				return d.opacity;
 				})
@@ -687,11 +695,11 @@ div.tooltipPlot{
 		<a href="${contextpath }/ideology_quiz/ideology/index">Home</a>
 	</div>
 	<div id="formholder" style="margin-left: 0%;">
-		<table id="resultsTable" style="width: 46%; float: left;">
+		<table id="resultsTable" style="width: 25%; float: left; margin-left: 10%;">
 		</table>
 
 		<div id="accordion"
-			style="font-size: .6em; text-align: right; width: 460px; float: left;">
+			style="font-size: 0.6em; text-align: right; width: 460px; float: left; margin-left: 7%;">
 			<h3>Nightingale Graph</h3>
 			<div>
 				<div id="nGraph">
