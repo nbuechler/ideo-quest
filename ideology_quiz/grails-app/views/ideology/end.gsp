@@ -9,6 +9,7 @@
 #instructions {
 	margin: 2.5%;
 	padding: 2.5%;
+	padding-bottom: 4%;
 	background-color: aliceblue;
 	font-size: 80%;
 }
@@ -44,6 +45,19 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
 		.8px .8px 0 #000;
 }
+
+div.ttNG {
+	visibility: hidden;
+	background-color: lightblue;
+	font-size: 100%;
+	border: solid gray;
+	border-width: 1px;
+	padding: 10px;
+	position: absolute;
+	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
+		.8px .8px 0 #000;
+}
+
 </style>
 
 <g:javascript src="d3.v3.js" />
@@ -664,13 +678,12 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 	
 	d3.selectAll(".ism")
 		.on("mouseover", function() {
-		console.log(this)
 		        d3.select(this)
 		        return tooltipGeneral
 		        	.style("visibility", "visible")
 		        	.style("background-color", "darkslategray")//this.__data__.color)
 		        	.style("color", "white")
-		        	.style("margin-top", this.offsetTop - 200 + "px")
+		        	.style("margin-top", this.offsetTop -370 + "px")
 		        	.style("margin-left", this.offsetLeft - 200 + "px")
 		        	.text("Learn more about " + this.lastChild.innerHTML + " by clicking here!")
 		        	.style("font-size", "80%")
@@ -685,6 +698,7 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 		    })
 			;
 
+/*
 	$(function() {
 		$( "#openingMessage" ).dialog({
 			modal: true,
@@ -696,6 +710,36 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 			}
 		});
 	});
+*/
+ 
+</g:javascript>
+
+<g:javascript>
+
+	var ttNG = d3.select("div.ttNG");
+
+	d3.selectAll("#ttNGQuestion")
+		.on("mouseover", function() {
+		        d3.select(this)
+		        return ttNG
+		        	.style("visibility", "visible")
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
+		        	.style("margin-top", this.offsetTop - 800 + "px")
+		        	.style("margin-left", this.offsetLeft - 1350 + "px")
+		        	.style("font-size", "100%")
+		        	.style("width", "300px")
+		        	.style("height", "66%")
+		        	//.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
+				;
+		    })
+		.on("mouseout", function() {
+		        d3.select(this)
+				return ttNG
+					.style("visibility", "hidden")
+				;
+		    })
+			;
 
 </g:javascript>
 
@@ -705,11 +749,13 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 		<a href="${contextpath }/ideology_quiz/ideology/index">Home</a>
 	</div>
 	<div id="instructions">
-	Welcome to your dashboard where you will find all the information related to our
-	system's analysis of how you answered the questions. We have included a table and a
-	variety of visualizations to spark your interest. Any place you find a --insert image 
-	here --,you can learn more about the specific graph. If you have additional questions,
-	please see our <a href="#">FAQ.</a>
+		<p>Welcome to your dashboard where you will find all the information related to our
+		system's analysis of how you answered the questions where we have included a table and a
+		variety of visualizations to spark your interest. If you have questions, please see our <a href="#">FAQ.</a>
+		</p>
+		<p></p>
+		<p style="float: left"><i>Note-- You will get more information about visualizations when you hover your cursor over this symbol:</i></p>
+		<div style="float: right; margin-right: 30%;"class="ui-icon ui-icon-help"></div>
 	</div>
 	<div id="actionHolder" style="margin-left: 0%;">
 		<table id="resultsTable" style="width: 25%; float: left; margin-left: 10%;">
@@ -719,7 +765,37 @@ div.tooltip, div.tooltipBar, div.tooltipPlot, div.tooltipSquare, div.tooltipGene
 			style="font-size: 0.6em; text-align: right; width: 460px; float: left; margin-left: 7%;">
 			<h3>Nightingale Graph</h3>
 			<div>
+				<p id="ttNGQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="nGraph">
+				</div>
+				<div class="ttNG">
+					<div>
+						<div style="float: left;">
+							<b>About the Nightingale Graph</b>
+						</div>
+						<br>
+						<br>
+						<div style="float: left;">
+							<b>Radius</b> indicates the intesity of ideology
+						</div>
+						<div style="float: left;">
+							<b>Area</b> indicates the overall percentage of ideology
+						</div>
+						<div style="float: left;">
+							<b>Theta</b> indicates the number of points of the ideolgy
+						</div>
+						<div style="float: left;">
+							<b>Color</b> indicates the type of ideology
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<div style="padding-top: 10%;">
+						<b>History</b> 
+					</div>
+					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum metus. Curabitur et leo gravida leo tincidunt aliquet. Curabitur ante dolor, viverra vitae faucibus ut, tempus ut erat. Quisque ultricies, ipsum at consectetur bibendum, tellus purus pretium sem, et gravida nulla erat vitae felis. Vivamus mattis congue commodo. Suspendisse faucibus condimentum dolor vitae fermentum. Proin lectus turpis, rutrum ut congue ut, viverra nec ipsum. Duis quis vestibulum libero. Nam molestie, mi in lobortis pulvinar, nisl odio commodo odio, ut luctus nunc est quis justo. Nunc id dolor molestie, rutrum odio at, faucibus mauris. Integer sed aliquam massa, ut dapibus elit. Proin porta quam libero, at facilisis ligula tristique aliquet. In quis dictum nisl. Sed aliquet placerat sapien, vitae condimentum mi luctus in. Mauris euismod ultrices leo, eu commodo libero.
+					</div>
 				</div>
 				<div class="tooltip">Errorror</div>
 				<div style="text-align: center;">*Drawn to scale</div>
