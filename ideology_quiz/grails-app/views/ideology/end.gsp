@@ -705,7 +705,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 			modal: true,
 			width: "500px",
 			buttons: {
-				Ok: function() {
+				Great: function() {
 					$( this ).dialog( "close" );
 				}
 			}
@@ -856,6 +856,9 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 						<div style="float: left;">
 							<b>Color</b> indicates the type of ideology
 						</div>
+						<div style="float: left;">
+							<b>Opacity</b> indicates the intesity of ideology
+						</div>
 					</div>
 					<br>
 					<br>
@@ -877,7 +880,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 				<div class="ttOH">
 					<div>
 						<div style="float: left;">
-							<b>About the Ein Hundert Graph</b>
+							<b>About the Ein Hundert Ideen</b>
 						</div>
 						<br>
 						<br>
@@ -885,7 +888,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 							<b>One Block</b> indicates roughly one percent of ideology
 						</div>
 						<div style="float: left;">
-							<b>Highlighted Group</b> rough total percentage of ideology
+							<b>Many Blocks</b> indicates ~ percentage of an ideology
 						</div>
 						<div style="float: left;">
 							<b>Color</b> indicates the type of ideology
@@ -916,9 +919,6 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 						<br>
 						<br>
 						<div style="float: left;">
-							<b>Opacity</b> indicates the intesity of ideology
-						</div>
-						<div style="float: left;">
 							<b>X-Axis</b> list from top-bottom(table) = left-right
 						</div>
 						<div style="float: left;">
@@ -926,6 +926,9 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 						</div>
 						<div style="float: left;">
 							<b>Color</b> indicates the type of ideology
+						</div>
+						<div style="float: left;">
+							<b>Opacity</b> indicates the intesity of ideology
 						</div>
 					</div>
 					<br>
@@ -956,9 +959,6 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 							<b>Plot Size</b> indicates the percentage of ideology
 						</div>
 						<div style="float: left;">
-							<b>Opacity</b> indicates the intesity of ideology
-						</div>
-						<div style="float: left;">
 							<b>X-Axis</b> list from top-bottom(table) = left-right
 						</div>
 						<div style="float: left;">
@@ -966,6 +966,9 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 						</div>
 						<div style="float: left;">
 							<b>Color</b> indicates the type of ideology
+						</div>
+						<div style="float: left;">
+							<b>Opacity</b> indicates the intesity of ideology
 						</div>
 					</div>
 					<br>
