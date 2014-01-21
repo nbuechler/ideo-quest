@@ -59,6 +59,18 @@ div.tooltipBar{
 	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
 		.8px .8px 0 #000;
 }
+
+div.tooltipPlot{
+	visibility: hidden;
+	background-color: lightblue;
+	font-size: 100%;
+	border: solid gray;
+	border-width: 1px;
+	padding: 10px;
+	position: absolute;
+	text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000, -.8px .8px 0 #000,
+		.8px .8px 0 #000;
+}
 </style>
 
 <g:javascript src="d3.v3.js" />
@@ -136,6 +148,7 @@ div.tooltipBar{
 	var tooltip = d3.select("div.tooltip");
 	var tooltipSquare = d3.select("div.tooltipSquare")
 	var tooltipBar = d3.select("div.tooltipBar")
+	var tooltipPlot = d3.select("div.tooltipPlot")
 
 	chart.selectAll("path")
 			.data(data)
@@ -559,6 +572,97 @@ div.tooltipBar{
 		.attr("y2", h1C - .5)
 		.style("stroke", "#000");
 
+<!-- Scatter Plot -->
+	var w1P = 320;
+	var h1P = 320;
+
+	var x = d3.scale.linear()
+    	.domain([0, 1])
+ 		.range([0, w1P]);
+ 
+	var y = d3.scale.linear()
+		.domain([0, d3.max(data, function(d) { return d.outRadius; })])
+		.rangeRound([0, h1P]);
+
+	
+	var svg = d3.select("#scatterPlot").append("svg:svg")
+		    .attr("width", w1P)
+		    .attr("height", h1P)
+		    .style("margin-left", "50px")
+		    .style("margin-right", "50px")
+		    //.style("background-color", "gray")
+		    ;
+	
+	svg.selectAll("circle")
+		.data(data)
+	  .enter().append("circle")
+		.attr("cx", function(d, i) {
+		return (i * (w1P- d3.max(data, function(d) { 
+			return d.outRadius; }))/data.length)
+			+ d3.max(data, function(d) { return d.outRadius/2; }); })
+		.attr("cy", function(d) { return (h1P - y(d.outRadius))
+			+ d3.max(data, function(d) { return d.outRadius/2; }); })
+		.attr("r", function(d) { return d.areaPercentage; })
+		.attr("width", 20)
+		.style("fill", function(d) { return d.color; })
+		.style("stroke", "black")
+		.style("stroke-width", "1px")
+		.style("opacity", function(d,i){
+				return d.opacity;
+				})
+		
+		.on("mouseover", function() {
+		        d3.select(this)
+		        .style("opacity", .1)
+		        return tooltipPlot
+		        	.style("visibility", "visible")
+		        	.style("background-color", "darkslategray")//this.__data__.color)
+		        	.style("color", "white")
+		        	.text(this.__data__.areaPercentage.toFixed(2) + "% " + this.__data__.ideologyName)
+				;
+		    })
+		    .on("mouseenter", function(d,i) {
+					d3.selectAll("." + this.__data__.ideologyName)
+					.style("opacity", .4)
+					.style("fill", this.__data__.color)
+					.style("stroke", this.__data__.color)
+					.style("background-color", this.__data__.color)
+					d3.select(this)
+					.style("opacity", .1)
+					;
+				})
+			.on("mouseleave", function(d,i) {
+				d3.selectAll("." + this.__data__.ideologyName)
+				.style("opacity", 1)
+				.style("fill", this.__data__.color)
+				.style("stroke", "black")
+				.style("background-color", "white")
+				;
+			})
+		    .on('mousemove', function(d) {
+				return tooltipPlot
+		            .style("top", (d3.event.pageY + 16) + "px")
+		            .style("left", (d3.event.pageX + 16) + "px");
+			})
+		    .on("mouseout", function() {
+		        d3.select(this)
+		        .style("opacity", function(d,i){
+				return d.opacity;
+				})
+				return tooltipPlot
+					.style("visibility", "hidden")
+				;
+		    })
+			;
+		
+	svg.append("line")
+		.attr("x1", 0)
+		.attr("x2", w1P)
+		.attr("y1", h1P - .5)
+		.attr("y2", h1P - .5)
+		.style("stroke", "#000");
+
+
 </g:javascript>
 
 <g:javascript>
@@ -609,10 +713,12 @@ div.tooltipBar{
 				<div class="tooltipBar">Errorror</div>
 				<div style="text-align: center;">*Drawn to scale</div>
 			</div>
-			<h3>Graph D</h3>
+			<h3>Scatter Plot</h3>
 			<div>
-				<p>Cras dictum. Pellentesque habitant morbi tristique senectus
-					et per conubia nostra, per inceptos himenaeos.</p>
+				<div id="scatterPlot">
+				</div>
+				<div class="tooltipPlot">Errorror</div>
+				<div style="text-align: center;">*Drawn to scale</div>
 			</div>
 		</div>
 
