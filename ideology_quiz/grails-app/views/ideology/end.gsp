@@ -10,7 +10,7 @@
 	margin: 2.5%;
 	padding: 2.5%;
 	padding-bottom: 4%;
-	background-color: aliceblue;
+	background-color: #D7D8E2;
 	font-size: 80%;
 }
 
@@ -60,8 +60,6 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 }
 
 </style>
-
-<g:javascript src="d3.v3.js" />
 
 </head>
 

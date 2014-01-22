@@ -22,6 +22,9 @@
 		
 		</style>
 		
+		<g:javascript src="d3.v3.js" />
+		
+		
 		<g:javascript>
 		$(function() {
 			$( "input[type=submit]" )
