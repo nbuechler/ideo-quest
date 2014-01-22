@@ -11,10 +11,15 @@
 
 <style>
 
+.tableImg{
+	border-radius: 5px;
+} 
+
 #wrapper{
 	background-color: #A3A7B9;
 	padding: 2.5%;
 	margin: 2.5%;
+	border-top-left-radius: 20px;
 }
 
 #footHome{
@@ -153,9 +158,9 @@
 	border-bottom-right-radius: 10px;
 }
 
-div.tooltip{
+div.tooltip, div.tooltipTable{
 	visibility: hidden;
-	background-color: lightblue;
+	background-color: darkslategray;
 	font-size: 100%;
 	border: solid gray;
 	border-width: 1px;
@@ -166,91 +171,6 @@ div.tooltip{
 }
 
 </style>
-
-<g:javascript>
-
-	 $(function() {
-		$( "a#onwards" )
-		.button()
-		.click(function( event ) {
-		  event;
-		});
-	});
-
-	d3.select("#sA1")
-		.on("mouseover", function (){
-		console.log("hello")
-		d3.select("#stageArea01")
-			.style("display", "inline")
-			
-			d3.select("#stageArea02")
-			.style("display", "none")
-			d3.select("#stageArea03")
-			.style("display", "none")
-			d3.select("#stageArea04")
-			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
-		});
-		
-	d3.select("#sA2")
-		.on("mouseover", function (){
-		console.log("hello")
-		d3.select("#stageArea02")
-			.style("display", "inline")
-			
-			d3.select("#stageArea01")
-			.style("display", "none")
-			d3.select("#stageArea03")
-			.style("display", "none")
-			d3.select("#stageArea04")
-			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
-		});
-	
-	d3.select("#sA3")
-		.on("mouseover", function (){
-		console.log("hello")
-		d3.select("#stageArea03")
-			.style("display", "inline")
-			
-			d3.select("#stageArea01")
-			.style("display", "none")
-			d3.select("#stageArea02")
-			.style("display", "none")
-			d3.select("#stageArea04")
-			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
-		});
-	
-	d3.select("#sA4")
-		.on("mouseover", function (){
-		console.log("hello")
-		d3.select("#stageArea04")
-			.style("display", "inline")
-			
-			d3.select("#stageArea01")
-			.style("display", "none")
-			d3.select("#stageArea02")
-			.style("display", "none")
-			d3.select("#stageArea03")
-			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
-		});
-	
-
-</g:javascript>
 
 <g:set var="radiusScale" value="${18}" />
 
@@ -362,6 +282,7 @@ div.tooltip{
 			;
 
 	var tooltip = d3.select("div.tooltip");
+	var tooltipTable = d3.select("div.tooltipTable");
 
 	chart.selectAll("path")
 			.data(data)
@@ -421,6 +342,104 @@ div.tooltip{
 
 </g:javascript>
 
+
+<g:javascript>
+
+	 $(function() {
+		$( "a#onwards" )
+		.button()
+		.click(function( event ) {
+		  event;
+		});
+	});
+
+	d3.select("#sA1")
+		.on("mouseover", function (){
+		d3.select("#stageArea01")
+			.style("display", "inline")
+			
+			d3.select("#stageArea02")
+			.style("display", "none")
+			d3.select("#stageArea03")
+			.style("display", "none")
+			d3.select("#stageArea04")
+			.style("display", "none")
+			
+		d3.select("#coloClose")
+			.style("position", "relative")
+			.style("bottom", "288px");
+		});
+		
+	d3.select("#sA2")
+		.on("mouseover", function (){
+		d3.select("#stageArea02")
+			.style("display", "inline")
+			
+			d3.select("#stageArea01")
+			.style("display", "none")
+			d3.select("#stageArea03")
+			.style("display", "none")
+			d3.select("#stageArea04")
+			.style("display", "none")
+			
+		d3.select("#coloClose")
+			.style("position", "relative")
+			.style("bottom", "288px");
+		});
+	
+	d3.select("#sA3")
+		.on("mouseover", function (){
+		d3.select("#stageArea03")
+			.style("display", "inline")
+			
+			d3.select("#stageArea01")
+			.style("display", "none")
+			d3.select("#stageArea02")
+			.style("display", "none")
+			d3.select("#stageArea04")
+			.style("display", "none")
+			
+		d3.select("#coloClose")
+			.style("position", "relative")
+			.style("bottom", "288px");
+		});
+	
+	d3.select("#sA4")
+		.on("mouseover", function (){
+		d3.select("#stageArea04")
+			.style("display", "inline")
+			
+			d3.select("#stageArea01")
+			.style("display", "none")
+			d3.select("#stageArea02")
+			.style("display", "none")
+			d3.select("#stageArea03")
+			.style("display", "none")
+			
+		d3.select("#coloClose")
+			.style("position", "relative")
+			.style("bottom", "288px");
+		});
+	
+	d3.selectAll(".tableImg")
+		.on("mouseover", function () {
+		return tooltipTable
+			.style("visibility", "visible")
+			.style("margin-top", this.offsetTop/50 + "%")
+			.style("margin-left", this.offsetTop/50 + "%")
+			.text(this.alt)
+			;
+		})
+		.on("mouseout", function () {
+		return tooltipTable
+			.style("visibility", "hidden")
+			;
+		})
+		;
+	
+
+</g:javascript>
+
 </head>
 <body>
 
@@ -434,7 +453,7 @@ div.tooltip{
 		<div id="stageAreaWrapper">
 			<div id="stageDir">
 				<div class="sAreas" id="sA1">
-				
+				<img width="70px;" height="70px;" src="${resource(dir: 'images/home', file: 'log-ideology-home.jpg')}" alt="Ideology"/>
 				</div>
 				<div class="sAreas" id="sA2">
 				
@@ -484,13 +503,32 @@ div.tooltip{
 							<%-- <div id="onwards" style="color: aliceblue; text-decoration: none;" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a></div>--%>
 						</div>
 					</div>
-					<div class="tooltip">Errorror</div>
 					<div id="messageSA0" style="width: 260px; float: right;">
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
 						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">SA1</h4>
-						<div id="nGRandom" class="mainPageHolder"></div>
+						 -.8px .8px 0 #000, .8px .8px 0 #000;">Make Beauitful Visualizations!</h4>
+						<div id="tableExamples" class="mainPageHolder">
+							<div class="tooltipTable">Errorror</div>
+							<table style="margin-top: 25px; border: medium none;">
+								<tr>
+									<td>
+									<img class="tableImg" style="float: right;" width="90px;" height="72px;" src="${resource(dir: 'images/svg-screenshots', file: 'bar-chart.jpg')}" alt="Bar Chart"/>
+									</td>
+									<td>
+									<img class="tableImg" width="90px;" height="72px;" src="${resource(dir: 'images/svg-screenshots', file: 'scatter-plot.jpg')}" alt="Scatter Plot"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<img class="tableImg" style="float: right;" width="90px;" height="72px;" src="${resource(dir: 'images/svg-screenshots', file: 'einhundert-ideen.jpg')}" alt="Ein Hundert Ideen"/>
+									</td>
+									<td>
+									<img class="tableImg" width="90px;" height="72px;" src="${resource(dir: 'images/svg-screenshots', file: 'nightingale-graph.jpg')}" alt="Nightingale Graph"/>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
