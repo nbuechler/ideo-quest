@@ -439,16 +439,7 @@ class IdeologyController {
 		}
 		log.error(allRadiusUnits + " are allRadiusUnits")
 		
-		[anarchismPercent:allRadiusPercentages[0], authoritarianismPercent:allRadiusPercentages[1], capitalismPercent:allRadiusPercentages[2], conservatismPercent:allRadiusPercentages[3], decentralismPercent:allRadiusPercentages[4], 
-			ecologismPercent:allRadiusPercentages[5], egalitarianismPercent:allRadiusPercentages[6], fundamentalismPercent:allRadiusPercentages[7], liberalismPercent:allRadiusPercentages[8], radicalismPercent:allRadiusPercentages[9], 
-			relativismPercent:allRadiusPercentages[10], socialismPercent:allRadiusPercentages[11], supremacismPercent:allRadiusPercentages[12],
-		anarchismRadius:allRadiusUnits[0], authoritarianismRadius:allRadiusUnits[1], capitalismRadius:allRadiusUnits[2], conservatismRadius:allRadiusUnits[3], decentralismRadius:allRadiusUnits[4], 
-			ecologismRadius:allRadiusUnits[5], egalitarianismRadius:allRadiusUnits[6], fundamentalismRadius:allRadiusUnits[7], liberalismRadius:allRadiusUnits[8], radicalismRadius:allRadiusUnits[9], 
-			relativismRadius:allRadiusUnits[10], socialismRadius:allRadiusUnits[11], supremacismRadius:allRadiusUnits[12],
-		anarchismTheta:allThetaRadians[0], authoritarianismTheta:allThetaRadians[1], capitalismTheta:allThetaRadians[2], conservatismTheta:allThetaRadians[3], decentralismTheta:allThetaRadians[4], 
-			ecologismTheta:allThetaRadians[5], egalitarianismTheta:allThetaRadians[6], fundamentalismTheta:allThetaRadians[7], liberalismTheta:allThetaRadians[8], radicalismTheta:allThetaRadians[9], 
-			relativismTheta:allThetaRadians[10], socialismTheta:allThetaRadians[11], supremacismTheta:allThetaRadians[12],
-		ideologiesCorrelates:ideologiesCorrelates, ideologies:ideologies,
+		[ideologiesCorrelates:ideologiesCorrelates, ideologies:ideologies,
 		allRadiusPercentages:allRadiusPercentages, allRadiusUnits: allRadiusUnits,
 		allThetaRadians: allThetaRadians]
 		
