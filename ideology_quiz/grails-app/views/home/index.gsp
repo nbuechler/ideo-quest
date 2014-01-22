@@ -5,69 +5,100 @@
 <meta name="layout" content="main"/>
 <title>Insert title here</title>
 
-	<g:javascript>
-		$(function() {
-			$( "#accordion" ).accordion({
-			});
-		});
-    </g:javascript>
+<style>
 
+#wrapper{
+	background-color: red;
+	padding: 2.5%;
+	margin: 2.5%;
+}
+
+#footHome{
+	text-align: center;
+	font-size: 70%;
+	padding-top: 1%;
+}
+
+.mainColo{
+	width: 31.3%;
+	margin: 1%;
+	float: left;
+	font-size: 78%;
+}
+
+#stageArea{
+	float: right;
+	width: 80%;
+	margin: 1%;
+	margin-top: 2%;
+}
+
+#stageDir{
+	float: right;
+	width: 16%;
+/* Need to figure out how to style a scroll bar
+	height: 500px;
+	overflow-y: scroll;
+*/
+	margin: 1%;
+}
+
+.sAreas{
+	background-color: pink;
+	border: 1px;
+	border-color: black;
+	border-style: solid;
+	width: 70px;
+	height: 70px;
+	margin: 10px;
+}
+
+</style>
 
 </head>
-
-<script>
-
-</script>
-
 <body>
 
 	<div class="body">
 		<a class="navbar" href="${contextpath }/ideology_quiz/reading/index">Reading</a>
-		<a class="navbar" href="${contextpath }/ideology_quiz/ideology/index">Ideology</a> This
-		is going to be the landing page for the Home page...
+		<a class="navbar" href="${contextpath }/ideology_quiz/ideology/index">Ideology</a>
+		This is going to be the landing page for the Home page...
 	</div>
 
-
-	<div id="accordion" style="font-size: .7em; text-align: right;">
-		<h3>About</h3>
-		<div>
-			<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget,
-				quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida
-				in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam
-				mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a
-				velit eu ante scelerisque vulputate.</p>
+	<div id="wrapper">
+		<div id="stageAreaWrapper">
+			<div id="stageArea">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet posuere lorem. Cras pulvinar, tellus non ultricies eleifend, felis sapien lacinia ante, eget vestibulum ipsum lorem eget neque. Etiam turpis metus, elementum ut turpis a, aliquam pretium ante. Maecenas tristique justo leo, in suscipit nulla laoreet molestie. Nulla vehicula dolor vel felis scelerisque, nec sodales felis pellentesque. Proin laoreet sapien nec sem luctus dictum.
+			</div>
+			<div id="stageDir">
+				<div class="sAreas" id="sA1">
+				
+				</div>
+				<div class="sAreas" id="sA2">
+				
+				</div>
+				<div class="sAreas" id="sA3">
+				
+				</div>
+				<div class="sAreas" id="sA4">
+				
+				</div>
+			</div>
 		</div>
-		<h3>Contact</h3>
-		<div>
-			<p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum
-				sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris
-				turpis porttitor velit, faucibus interdum tellus libero ac justo.
-				Vivamus non quam. In suscipit faucibus urna.</p>
+		<div id="coloClose">
+			<div class="mainColo" id="colo1">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet posuere lorem. Cras pulvinar, tellus non ultricies eleifend, felis sapien lacinia ante, eget vestibulum ipsum lorem eget neque. Etiam turpis metus, elementum ut turpis a, aliquam pretium ante. Maecenas tristique justo leo, in suscipit nulla laoreet molestie. Nulla vehicula dolor vel felis scelerisque, nec sodales felis pellentesque. Proin laoreet sapien nec sem luctus dictum.
+			</div>
+			<div class="mainColo" id="colo2">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet posuere lorem. Cras pulvinar, tellus non ultricies eleifend, felis sapien lacinia ante, eget vestibulum ipsum lorem eget neque. Etiam turpis metus, elementum ut turpis a, aliquam pretium ante. Maecenas tristique justo leo, in suscipit nulla laoreet molestie. Nulla vehicula dolor vel felis scelerisque, nec sodales felis pellentesque. Proin laoreet sapien nec sem luctus dictum.
+			</div>
+			<div class="mainColo" id="colo3">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet posuere lorem. Cras pulvinar, tellus non ultricies eleifend, felis sapien lacinia ante, eget vestibulum ipsum lorem eget neque. Etiam turpis metus, elementum ut turpis a, aliquam pretium ante. Maecenas tristique justo leo, in suscipit nulla laoreet molestie. Nulla vehicula dolor vel felis scelerisque, nec sodales felis pellentesque. Proin laoreet sapien nec sem luctus dictum.
+			</div>
 		</div>
-		<h3>More Information</h3>
-		<div>
-			<p>Nam enim risus, molestie et, porta ac, aliquam ac, risus.
-				Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in
-				pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac
-				felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam
-				nisi, eu iaculis leo purus venenatis dui.</p>
-			<ul>
-				<li>List item one</li>
-				<li>List item two</li>
-				<li>List item three</li>
-			</ul>
-		</div>
-		<h3>Feedback</h3>
-		<div>
-			<p>Cras dictum. Pellentesque habitant morbi tristique senectus et
-				netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum
-				primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-				Aenean lacinia mauris vel est.</p>
-			<p>Suspendisse eu nisl. Nullam ut libero. Integer dignissim
-				consequat lectus. Class aptent taciti sociosqu ad litora torquent
-				per conubia nostra, per inceptos himenaeos.</p>
+		<div id="footHome">
+			This is a footer?
 		</div>
 	</div>
-
+	
 </body>
 </html>
