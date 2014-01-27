@@ -10,6 +10,36 @@
 <g:set var="color3" value="#A3A7B9" />
 
 <style>
+#readingTable{
+	margin: 10px;
+}
+
+.cellReading{
+	width: 69px;
+	height: 53px;
+	background-color: #2F4F4F;
+	float: right;
+	color: #DBDCE5;
+	text-decoration: none;
+}
+
+.cellReading > a{
+	text-decoration: none;
+	color: #DBDCE5;
+}
+
+.cellReading:hover{
+	width: 69px;
+	height: 53px;
+	background-color: #DBDCE5;
+	color: #2F4F4F;
+	float: right;
+}
+
+.cellReading > a:hover{
+	text-decoration: none;
+	color: #2F4F4F;
+}
 
 .tableImg{
 	border-radius: 5px;
@@ -60,8 +90,6 @@
 	width: 80%;
 	margin: 1%;
 	margin-top: 2%;
-	position: relative;
-	bottom: 325px;
 	display: none;
 	z-index: 5;
 }
@@ -71,8 +99,6 @@
 	width: 80%;
 	margin: 1%;
 	margin-top: 2%;
-	position: relative;
-	bottom: 325px;
 	display: none;
 	z-index: 5;
 }
@@ -82,8 +108,6 @@
 	width: 80%;
 	margin: 1%;
 	margin-top: 2%;
-	position: relative;
-	bottom: 325px;
 	display: none;
 	z-index: 5;
 }
@@ -93,8 +117,6 @@
 	width: 80%;
 	margin: 1%;
 	margin-top: 2%;
-	position: relative;
-	bottom: 325px;
 	display: none;
 	z-index: 5;
 }
@@ -110,10 +132,12 @@
 }
 
 .sAreas{
+	/*
 	background-color: pink;
 	border: 1px;
 	border-color: black;
 	border-style: solid;
+	*/
 	width: 70px;
 	height: 70px;
 	margin: 10px;
@@ -132,6 +156,14 @@
 	border-radius: 11px;
 	border: solid 1px;
 }
+#messageSA1{
+	/*position: absolute;*/
+	margin-top: 5.9%;
+	margin-left: -4%;
+	background-color: #DBDCE5;
+	border-radius: 11px;
+	border: solid 1px;
+}
 
 #onwards{
 	background-color: silver;
@@ -143,6 +175,35 @@
 	padding-bottom: 50px; 
 	margin: 8px; 
 	margin-top: 17px; 
+	text-shadow: -1.8px -1.8px 0 #000, 
+	.8px -.8px 0 #000, -.8px .8px 0 #000, 
+	.8px .8px 0 #000;
+}
+
+#data, #info, #know{
+	float: left;
+	background-color: silver;
+	color: aliceblue;
+	width: 29%; 
+	font-size: 20px; 
+	border-radius: 10px; 
+	padding-top: 50px; 
+	padding-bottom: 50px; 
+	margin: 8px; 
+	margin-top: 17px; 
+	text-shadow: -1.8px -1.8px 0 #000, 
+	.8px -.8px 0 #000, -.8px .8px 0 #000, 
+	.8px .8px 0 #000;
+}
+
+#submit{
+	float: left;
+	background-color: silver;
+	color: aliceblue;
+	width: 29%;
+	height: 18%;
+	font-size: 20px; 
+	border-radius: 10px; 
 	text-shadow: -1.8px -1.8px 0 #000, 
 	.8px -.8px 0 #000, -.8px .8px 0 #000, 
 	.8px .8px 0 #000;
@@ -345,46 +406,70 @@ div.tooltip, div.tooltipTable{
 
 <g:javascript>
 
-	 $(function() {
-		$( "a#onwards" )
-		.button()
-		.click(function( event ) {
-		  event;
+		$(function() {
+			$( "a#onwards" )
+			.button()
+			.click(function( event ) {
+			  event;
+			});
 		});
-	});
+		$(function() {
+			$( "a#data" )
+			.button()
+			.click(function( event ) {
+			  event;
+			});
+		});
+		$(function() {
+			$( "a#info" )
+			.button()
+			.click(function( event ) {
+			  event;
+			});
+		});
+		$(function() {
+			$( "a#know" )
+			.button()
+			.click(function( event ) {
+			  event;
+			});
+		});
+		$(function() {
+			$( "a#submit" )
+			.button()
+			.click(function( event ) {
+			  event;
+			});
+		});
 
 	d3.select("#sA1")
 		.on("mouseover", function (){
 		d3.select("#stageArea01")
 			.style("display", "inline")
 			
+			d3.select("#stageAreaMain")
+			.style("display", "none")
 			d3.select("#stageArea02")
 			.style("display", "none")
 			d3.select("#stageArea03")
 			.style("display", "none")
 			d3.select("#stageArea04")
 			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
 		});
-		
+			
 	d3.select("#sA2")
 		.on("mouseover", function (){
 		d3.select("#stageArea02")
 			.style("display", "inline")
 			
+			d3.select("#stageAreaMain")
+			.style("display", "none")
 			d3.select("#stageArea01")
 			.style("display", "none")
 			d3.select("#stageArea03")
 			.style("display", "none")
 			d3.select("#stageArea04")
 			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
 		});
 	
 	d3.select("#sA3")
@@ -392,16 +477,14 @@ div.tooltip, div.tooltipTable{
 		d3.select("#stageArea03")
 			.style("display", "inline")
 			
+			d3.select("#stageAreaMain")
+			.style("display", "none")
 			d3.select("#stageArea01")
 			.style("display", "none")
 			d3.select("#stageArea02")
 			.style("display", "none")
 			d3.select("#stageArea04")
 			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
 		});
 	
 	d3.select("#sA4")
@@ -409,16 +492,14 @@ div.tooltip, div.tooltipTable{
 		d3.select("#stageArea04")
 			.style("display", "inline")
 			
+			d3.select("#stageAreaMain")
+			.style("display", "none")
 			d3.select("#stageArea01")
 			.style("display", "none")
 			d3.select("#stageArea02")
 			.style("display", "none")
 			d3.select("#stageArea03")
 			.style("display", "none")
-			
-		d3.select("#coloClose")
-			.style("position", "relative")
-			.style("bottom", "288px");
 		});
 	
 	d3.selectAll(".tableImg")
@@ -453,16 +534,16 @@ div.tooltip, div.tooltipTable{
 		<div id="stageAreaWrapper">
 			<div id="stageDir">
 				<div class="sAreas" id="sA1">
-				<img width="70px;" height="70px;" src="${resource(dir: 'images/home', file: 'log-ideology-home.jpg')}" alt="Ideology"/>
+				<img width="80px;" height="69.25px;" src="${resource(dir: 'images/widgets', file: 'nav-visualize.gif')}" alt="Ideology"/>
 				</div>
 				<div class="sAreas" id="sA2">
-				
+				<img width="80px;" height="69.25px;" src="${resource(dir: 'images/widgets', file: 'nav-mission.gif')}" alt="Ideology"/>
 				</div>
 				<div class="sAreas" id="sA3">
-				
+				<img width="80px;" height="69.25px;" src="${resource(dir: 'images/widgets', file: 'nav-readings.gif')}" alt="Ideology"/>
 				</div>
 				<div class="sAreas" id="sA4">
-				
+				<img width="80px;" height="69.25px;" src="${resource(dir: 'images/widgets', file: 'nav-feedback.gif')}" alt="Ideology"/>
 				</div>
 			</div>
 			<div id="stageAreaMain">
@@ -507,7 +588,7 @@ div.tooltip, div.tooltipTable{
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
 						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">Make Beauitful Visualizations!</h4>
+						 -.8px .8px 0 #000, .8px .8px 0 #000;">Visualize your Ideology!</h4>
 						<div id="tableExamples" class="mainPageHolder">
 							<div class="tooltipTable">Errorror</div>
 							<table style="margin-top: 25px; border: medium none;">
@@ -534,73 +615,82 @@ div.tooltip, div.tooltipTable{
 			</div>
 			<div id="stageArea02">
 				<div id="welcomeSA0" >
-					<div id="messageSA0" style="width: 185px; float: left;">
-						<h4 style="text-align: center;
-						padding: 3px; color: aliceblue; 
-						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">Welcome</h4>
-						<div class="mainPageHolder">
-							<br>
-							<p>Begin your Ideoquest...<p>
-							<a id="onwards" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a>
-							<%-- <div id="onwards" style="color: aliceblue; text-decoration: none;" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a></div>--%>
-						</div>
-					</div>
 					<div class="tooltip">Errorror</div>
-					<div id="messageSA0" style="width: 260px; float: right;">
+					<div id="messageSA1" style="width: 455px; float: right;">
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
 						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">SA2</h4>
-						<div id="nGRandom" class="mainPageHolder"></div>
+						 -.8px .8px 0 #000, .8px .8px 0 #000;">To courageously discover ideas!</h4>
+						<div id="nGRandom" class="mainPageHolder">
+						<br>
+						<p>Harness the data at your finger tips, develop and filter your information, and discover new sources of knowledge!<p>
+						<a id="data" href="${contextpath}/ideology_quiz/ideology/index">Data!</a>
+						<a id="info" href="${contextpath}/ideology_quiz/ideology/index">Info!</a>
+						<a id="know" href="${contextpath}/ideology_quiz/ideology/index">Know!</a>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div id="stageArea03">
 				<div id="welcomeSA0" >
-					<div id="messageSA0" style="width: 185px; float: left;">
-						<h4 style="text-align: center;
-						padding: 3px; color: aliceblue; 
-						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">Welcome</h4>
-						<div class="mainPageHolder">
-							<br>
-							<p>Begin your Ideoquest...<p>
-							<a id="onwards" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a>
-							<%-- <div id="onwards" style="color: aliceblue; text-decoration: none;" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a></div>--%>
-						</div>
-					</div>
 					<div class="tooltip">Errorror</div>
-					<div id="messageSA0" style="width: 260px; float: right;">
+					<div id="messageSA1" style="width: 455px; float: right;">
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
 						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">SA3</h4>
-						<div id="nGRandom" class="mainPageHolder"></div>
+						 -.8px .8px 0 #000, .8px .8px 0 #000;">Read and Learn about Ideologies!</h4>
+						<div id="nGRandom" class="mainPageHolder">
+							<div id="readingTable">
+								<div id="row01">
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+								</div>
+								<div id="row02">
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+								</div>
+								<div id="row03">
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+								</div>
+								<div id="row04">
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div id="stageArea04">
 				<div id="welcomeSA0" >
-					<div id="messageSA0" style="width: 185px; float: left;">
-						<h4 style="text-align: center;
-						padding: 3px; color: aliceblue; 
-						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">Welcome</h4>
-						<div class="mainPageHolder">
-							<br>
-							<p>Begin your Ideoquest...<p>
-							<a id="onwards" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a>
-							<%-- <div id="onwards" style="color: aliceblue; text-decoration: none;" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a></div>--%>
-						</div>
-					</div>
 					<div class="tooltip">Errorror</div>
-					<div id="messageSA0" style="width: 260px; float: right;">
+					<div id="messageSA1" style="width: 455px; float: right;">
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
 						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">SA4</h4>
-						<div id="nGRandom" class="mainPageHolder"></div>
+						 -.8px .8px 0 #000, .8px .8px 0 #000;">Share your ideas!</h4>
+						<div id="nGRandom" class="mainPageHolder">
+						<br>
+						<input style="width: 91%; height: 60%;"></input>
+						<a id="submit" style="float: right; margin-top: 3%; margin-right: 3%;" href="${contextpath}/ideology_quiz/ideology/index">Submit!</a>
+						</div>
 					</div>
 				</div>
 			</div>
