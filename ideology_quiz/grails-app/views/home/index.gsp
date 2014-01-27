@@ -50,6 +50,7 @@
 	padding: 2.5%;
 	margin: 2.5%;
 	border-top-left-radius: 20px;
+	min-height: 600px;
 }
 
 #footHome{
@@ -697,18 +698,32 @@ div.tooltip, div.tooltipTable{
 		</div>
 		<div id="coloClose">
 			<div class="mainColo" id="colo1">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet posuere lorem. Cras pulvinar, tellus non ultricies eleifend, felis sapien lacinia ante, eget vestibulum ipsum lorem eget neque. Etiam turpis metus, elementum ut turpis a, aliquam pretium ante. Maecenas tristique justo leo, in suscipit nulla laoreet molestie. Nulla vehicula dolor vel felis scelerisque, nec sodales felis pellentesque. Proin laoreet sapien nec sem luctus dictum.
+				<a id="onwards" href="${contextpath}/ideology_quiz/ideology/index">Begin your<br> Ideoquest!</a>
 			</div>
 			<div class="mainColo" id="colo2">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet posuere lorem. Cras pulvinar, tellus non ultricies eleifend, felis sapien lacinia ante, eget vestibulum ipsum lorem eget neque. Etiam turpis metus, elementum ut turpis a, aliquam pretium ante. Maecenas tristique justo leo, in suscipit nulla laoreet molestie. Nulla vehicula dolor vel felis scelerisque, nec sodales felis pellentesque. Proin laoreet sapien nec sem luctus dictum.
-			</div>
+				<h3 style="
+				text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
+							 -.8px .8px 0 #000, .8px .8px 0 #000;
+				text-align: center;">To courageously discover ideas!</h3>
+				<h2>Here at Ideoquest believe in free ideas. Our mission is to
+				 provide the freedom and discovery to everyone. Maybe then will the
+				  big data of the world transform inevitably in to knowledge.</h2>
+				</div>
 			<div class="mainColo" id="colo3">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet posuere lorem. Cras pulvinar, tellus non ultricies eleifend, felis sapien lacinia ante, eget vestibulum ipsum lorem eget neque. Etiam turpis metus, elementum ut turpis a, aliquam pretium ante. Maecenas tristique justo leo, in suscipit nulla laoreet molestie. Nulla vehicula dolor vel felis scelerisque, nec sodales felis pellentesque. Proin laoreet sapien nec sem luctus dictum.
+				<h3 style="
+				text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
+							 -.8px .8px 0 #000, .8px .8px 0 #000;
+				text-align: center;">Important Links</h3>
+				<h2>Link 1</h2>
+				<h2>Link 2</h2>
+				<h2>Link 3</h2>
+				<h2>Link 4</h2>
+			</div>
 			</div>
 		</div>
-		<div id="footHome">
-			This is a footer?
-		</div>
+	</div>
+	<div id="footHome">
+			© 2014 IdeoQuest. All Rights Reserved. | Reproduction permitted via <a href="http://www.gnu.org/licenses/gpl.html">GNU GENERAL PUBLIC LICENSE</a>
 	</div>
 	
 </body>
