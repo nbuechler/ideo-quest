@@ -15,16 +15,20 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		
+
 		<g:javascript library='jquery' />
 		<r:require module="jquery-ui"/>
 		
-		<style>
-		
-		</style>
 		
 		<g:javascript src="d3.v3.js" />
 		
-		
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'jquery.mCustomScrollbar.css')}" type="text/css">
+		<g:javascript>
+		var jq = document.createElement('script');
+		jq.src = "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js";
+		document.getElementsByTagName('head')[0].appendChild(jq);
+		</g:javascript>
+
 		<g:javascript>
 		$(function() {
 			$( "input[type=submit]" )
@@ -45,6 +49,7 @@
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
+		<g:javascript src="jquery.mCustomScrollbar.js" />
 		<r:layoutResources />
 	</body>
 </html>

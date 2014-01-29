@@ -67,11 +67,18 @@
 	color: #F7F7F9;
 }
 
+#overlay{
+	position: absolute;
+	z-index: 0;
+	opacity: .5;
+}
+
 #stageAreaWrapper{
 	background: -webkit-linear-gradient(left, #A3A7B9 , #D7D8E2); /* For Safari */
 	background: -o-linear-gradient(right, #A3A7B9, #D7D8E2); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(right, #A3A7B9, #D7D8E2); /* For Firefox 3.6 to 15 */
 	background: linear-gradient(to right, #A3A7B9 , #D7D8E2); /* Standard syntax */
+	
 	min-height: 360px;
 	border-radius: 10px;
 	border-right: black solid 2px;
@@ -84,6 +91,8 @@
 	width: 80%;
 	margin: 1%;
 	margin-top: 2%;
+	z-index: 5;
+	position: relative;
 }
 
 #stageArea01{
@@ -93,6 +102,7 @@
 	margin-top: 2%;
 	display: none;
 	z-index: 5;
+	position: relative;
 }
 
 #stageArea02{
@@ -102,6 +112,7 @@
 	margin-top: 2%;
 	display: none;
 	z-index: 5;
+	position: relative;
 }
 
 #stageArea03{
@@ -111,6 +122,7 @@
 	margin-top: 2%;
 	display: none;
 	z-index: 5;
+	position: relative;
 }
 
 #stageArea04{
@@ -120,6 +132,7 @@
 	margin-top: 2%;
 	display: none;
 	z-index: 5;
+	position: relative;
 }
 
 #stageDir{
@@ -130,6 +143,8 @@
 	overflow-y: scroll;
 */
 	margin: 1%;
+	z-index: 1;
+	position: relative;
 }
 
 .sAreas{
@@ -533,6 +548,7 @@ div.tooltip, div.tooltipTable{
 
 	<div id="wrapper">
 		<div id="stageAreaWrapper">
+			<div id="overlay"><img style="opacity: .1" src="${resource(dir: 'images/backgrounds', file: 'hexagon_background.gif')}"/></div>
 			<div id="stageDir">
 				<div class="sAreas" id="sA1">
 				<img width="80px;" height="69.25px;" src="${resource(dir: 'images/widgets', file: 'nav-visualize.gif')}" alt="Ideology"/>
@@ -723,8 +739,7 @@ div.tooltip, div.tooltipTable{
 		</div>
 	</div>
 	<div id="footHome">
-			© 2014 IdeoQuest. All Rights Reserved. | Reproduction permitted via <a href="http://www.gnu.org/licenses/gpl.html">GNU GENERAL PUBLIC LICENSE</a>
+			© 2014 IdeoQuest. All Rights Reserved. | Reproduction permitted via <a href="http://www.gnu.org/licenses/gpl.html">GPLv3 GENERAL PUBLIC LICENSE</a>
 	</div>
-	
 </body>
 </html>
