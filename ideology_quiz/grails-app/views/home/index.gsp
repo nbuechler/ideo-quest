@@ -15,12 +15,13 @@
 }
 
 .cellReading{
-	width: 69px;
-	height: 53px;
+	width: 210px;
+	<%--height: 53px;--%>
 	background-color: #2F4F4F;
 	float: right;
 	color: #DBDCE5;
 	text-decoration: none;
+	font-size: .8em;
 }
 
 .cellReading > a{
@@ -29,8 +30,8 @@
 }
 
 .cellReading:hover{
-	width: 69px;
-	height: 53px;
+	width: 210px;
+	<%--height: 53px;--%>
 	background-color: #DBDCE5;
 	color: #2F4F4F;
 	float: right;
@@ -659,36 +660,40 @@ div.tooltip, div.tooltipTable{
 						<div id="nGRandom" class="mainPageHolder">
 							<div id="readingTable">
 								<div id="row01">
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+
+	
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">conservatism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">centralism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">capitalism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">authoritarianism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">anthropocentrism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">anarchism</div></a>
 								</div>
 								<div id="row02">
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">elitism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">egalitarianism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">ecologism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">democratism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">decentralism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">corporatism</div></a>
 								</div>
 								<div id="row03">
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">marxism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">loyalism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">liberalism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">fundamentalism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">fascism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">ethnocentrism</div></a>
 								</div>
 								<div id="row04">
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
-									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">#</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">statism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">supremacism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">socialism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">republicanism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">relativism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">radicalism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">progressivism</div></a>
+									<a href="${contextpath}/ideology_quiz/reading/index"><div class="cellReading">pluralism</div></a>
 								</div>
 							</div>
 						</div>
