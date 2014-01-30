@@ -6,6 +6,10 @@
 <title>Results</title>
 
 <style>
+.accordionTitles{
+	height: 32px;
+}
+
 #instructions {
 	margin: 2.5%;
 	padding: 2.5%;
@@ -703,9 +707,6 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 			modal: true,
 			width: "500px",
 			buttons: {
-				Great: function() {
-					$( this ).dialog( "close" );
-				}
 			}
 		});
 	});
@@ -830,7 +831,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 
 		<div id="accordion"
 			style="font-size: 0.6em; text-align: right; width: 460px; float: left; margin-left: 7%;">
-			<h3>Nightingale Graph</h3>
+			<h3 class="accordionTitles">Nightingale Graph</h3>
 			<div>
 				<p id="ttNGQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="nGraph">
@@ -894,7 +895,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 				<div class="tooltip">Errorror</div>
 				<div style="text-align: center;">*Drawn to scale</div>
 			</div>
-			<h3>Ein Hundert Ideen</h3>
+			<h3 class="accordionTitles">Ein Hundert Ideen</h3>
 			<div>
 				<p id="ttOHQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="onehundredGraph">
@@ -936,7 +937,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 				<div class="tooltipSquare">Errorror</div>
 				<div style="text-align: center;">*Rounding approximations possible</div>
 			</div>
-			<h3>Bar Chart</h3>
+			<h3 class="accordionTitles">Bar Chart</h3>
 			<div>
 				<p id="ttBCQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="barChart">
@@ -980,7 +981,7 @@ div.ttNG, div.ttOH, div.ttBC, div.ttSP{
 				<div class="tooltipBar">Errorror</div>
 				<div style="text-align: center;">*Drawn to scale</div>
 			</div>
-			<h3>Scatter Plot</h3>
+			<h3 class="accordionTitles">Scatter Plot</h3>
 			<div>
 				<p id="ttSPQuestion" class="ui-icon ui-icon-help" style="float: right;"></p>
 				<div id="scatterPlot">

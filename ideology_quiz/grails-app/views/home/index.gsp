@@ -10,13 +10,33 @@
 <g:set var="color3" value="#A3A7B9" />
 
 <style>
+.bodyLink{
+	margin: 0.3em;
+	font-size: 1.3em;
+	background-color: #C4C6CF;
+	padding: 0.4em;
+	color: rgb(47, 79, 79);
+	font-weight: bold;
+	border-radius: 7px;
+	border: 1px solid #E5E5E5;
+}
+
+.bodyText{
+	margin: 0.1em;
+	font-size: 1.3em;
+	background-color: rgb(229, 229, 229);
+	padding: 0.4em;
+	color: rgb(47, 79, 79);
+	font-weight: bold;
+	border-radius: 7px;
+}
+
 #readingTable{
 	margin: 10px;
 }
 
 .cellReading{
 	width: 210px;
-	<%--height: 53px;--%>
 	background-color: #2F4F4F;
 	float: right;
 	color: #DBDCE5;
@@ -31,7 +51,6 @@
 
 .cellReading:hover{
 	width: 210px;
-	<%--height: 53px;--%>
 	background-color: #DBDCE5;
 	color: #2F4F4F;
 	float: right;
@@ -404,8 +423,8 @@ div.tooltip, div.tooltipTable{
 			})
 		    .on('mousemove', function(d) {
 				return tooltip
-		            .style("top", (d3.event.pageY + 16) + "px")
-		            .style("left", (d3.event.pageX + 16) + "px");
+		            .style("top", (d3.event.pageY - 324) + "px")
+		            .style("left", (d3.event.pageX - 500) + "px");
 			})
 		    .on("mouseout", function() {
 		        d3.select(this)
@@ -633,7 +652,6 @@ div.tooltip, div.tooltipTable{
 			</div>
 			<div id="stageArea02">
 				<div id="welcomeSA0" >
-					<div class="tooltip">Errorror</div>
 					<div id="messageSA1" style="width: 455px; float: right;">
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
@@ -651,7 +669,6 @@ div.tooltip, div.tooltipTable{
 			</div>
 			<div id="stageArea03">
 				<div id="welcomeSA0" >
-					<div class="tooltip">Errorror</div>
 					<div id="messageSA1" style="width: 455px; float: right;">
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
@@ -702,7 +719,6 @@ div.tooltip, div.tooltipTable{
 			</div>
 			<div id="stageArea04">
 				<div id="welcomeSA0" >
-					<div class="tooltip">Errorror</div>
 					<div id="messageSA1" style="width: 455px; float: right;">
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
@@ -726,19 +742,22 @@ div.tooltip, div.tooltipTable{
 				text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
 							 -.8px .8px 0 #000, .8px .8px 0 #000;
 				text-align: center;">To courageously discover ideas!</h3>
-				<h2>Here at Ideoquest believe in free ideas. Our mission is to
-				 provide the freedom and discovery to everyone. Maybe then will the
-				  big data of the world transform inevitably in to knowledge.</h2>
+				<div class="bodyText">
+				Ideoquest is about new ideas.
+				Anyone can start out with knowing that their 
+				ideology isn't just a single fixed point on a specturm.
+				That data will inevitably turn into knowledge.</di>
 				</div>
+			</div>
 			<div class="mainColo" id="colo3">
 				<h3 style="
 				text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
 							 -.8px .8px 0 #000, .8px .8px 0 #000;
 				text-align: center;">Important Links</h3>
-				<h2>Link 1</h2>
-				<h2>Link 2</h2>
-				<h2>Link 3</h2>
-				<h2>Link 4</h2>
+				<div class="bodyLink"><a href="#">Link1</a></div>
+				<div class="bodyLink"><a href="#">Link2</a></div>
+				<div class="bodyLink"><a href="#">Link3</a></div>
+				<div class="bodyLink"><a href="#">Link4</a></div>
 			</div>
 			</div>
 		</div>
