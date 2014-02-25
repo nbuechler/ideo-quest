@@ -46,21 +46,20 @@ class ReadingController {
 	}
 	
 	def anthropocentrism() {
+		this.ideoListMaker()
+		[ideoList:ideoList]
 		render template: 'anthropocentrism',
 			contentType: 'text/plain'
-			[ideoList:ideoList]
 	}
 	
 	def authoritarianism() {
 		render template: 'authoritarianism',
 			contentType: 'text/plain'
-			[ideoList:ideoList]
 	}
 	
 	def capitalism() {
 		render template: 'capitalism',
 			contentType: 'text/plain'
-			[ideoList:ideoList]
 	}
 	
 	def centralism() {

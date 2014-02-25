@@ -19,6 +19,15 @@
 	font-weight: bold;
 	border-radius: 7px;
 	border: 1px solid #E5E5E5;
+	text-align: center;
+}
+
+.bodyLink > a{
+	color: #2F4F4F;
+	text-decoration: none;
+}
+.bodyLink > a:hover{
+	color: #DBDCE5;
 }
 
 .bodyText{
@@ -563,7 +572,6 @@ div.tooltip, div.tooltipTable{
 	<div class="body">
 		<a class="navbar" href="${contextpath }/ideology_quiz/reading/index">Reading</a>
 		<a class="navbar" href="${contextpath }/ideology_quiz/ideology/index">Ideology</a>
-		This is going to be the landing page for the Home page...
 	</div>
 
 	<div id="wrapper">
@@ -592,7 +600,7 @@ div.tooltip, div.tooltipTable{
 						 -.8px .8px 0 #000, .8px .8px 0 #000;">Welcome</h4>
 						<div class="mainPageHolder">
 							<br>
-							<p>Begin your Ideoquest...<p>
+							<p><b>Begin your Ideoquest</b><p>
 							<a id="onwards" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a>
 							<%-- <div id="onwards" style="color: aliceblue; text-decoration: none;" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a></div>--%>
 						</div>
@@ -616,7 +624,7 @@ div.tooltip, div.tooltipTable{
 						 -.8px .8px 0 #000, .8px .8px 0 #000;">Welcome</h4>
 						<div class="mainPageHolder">
 							<br>
-							<p>Begin your Ideoquest...<p>
+							<p><b>Begin your Ideoquest</b><p>
 							<a id="onwards" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a>
 							<%-- <div id="onwards" style="color: aliceblue; text-decoration: none;" href="${contextpath}/ideology_quiz/ideology/index">Onwards!</a></div>--%>
 						</div>
@@ -659,7 +667,7 @@ div.tooltip, div.tooltipTable{
 						 -.8px .8px 0 #000, .8px .8px 0 #000;">To courageously discover ideas!</h4>
 						<div id="nGRandom" class="mainPageHolder">
 						<br>
-						<p>Harness the data at your finger tips, develop and filter your information, and discover new sources of knowledge!<p>
+						<p><b>Harness the data at your finger tips, develop information, and discover new sources of knowledge!</b><p>
 						<a id="data" href="${contextpath}/ideology_quiz/ideology/index">Data!</a>
 						<a id="info" href="${contextpath}/ideology_quiz/ideology/index">Info!</a>
 						<a id="know" href="${contextpath}/ideology_quiz/ideology/index">Know!</a>
@@ -673,7 +681,7 @@ div.tooltip, div.tooltipTable{
 						<h4 style="text-align: center;
 						padding: 3px; color: aliceblue; 
 						text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
-						 -.8px .8px 0 #000, .8px .8px 0 #000;">Read and Learn about Ideologies!</h4>
+						 -.8px .8px 0 #000, .8px .8px 0 #000;"><b>Read and Learn about Ideologies!</b></h4>
 						<div id="nGRandom" class="mainPageHolder">
 							<div id="readingTable">
 								<div id="row01">
@@ -754,10 +762,10 @@ div.tooltip, div.tooltipTable{
 				text-shadow: -.8px -.8px 0 #000, .8px -.8px 0 #000,
 							 -.8px .8px 0 #000, .8px .8px 0 #000;
 				text-align: center;">Important Links</h3>
-				<div class="bodyLink"><a href="#">Link1</a></div>
-				<div class="bodyLink"><a href="#">Link2</a></div>
-				<div class="bodyLink"><a href="#">Link3</a></div>
-				<div class="bodyLink"><a href="#">Link4</a></div>
+				<div class="bodyLink"><a href="#">Login to your Profile</a></div>
+				<div class="bodyLink"><a href="#">Discover new articles</a></div>
+				<div class="bodyLink"><a href="#">Join like-minded groups</a></div>
+				<div class="bodyLink"><a href="#">Search for something</a></div>
 			</div>
 			</div>
 		</div>

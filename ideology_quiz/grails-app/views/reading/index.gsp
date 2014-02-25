@@ -21,14 +21,21 @@ h6 {
 	height: 500px; 
 	background: none repeat scroll 0% 0% #D7D8E2;
 	padding: 1%;
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
 }
 
 #focusReading{
 	float: left; 
-	width: 76%; 
+	width: 80%;
 	height: 500px; 
 	background: none repeat scroll 0% 0% aliceblue;
-	padding: 1%;
+	padding-top: 1%;
+	border: 10px ridge #D7D8E2;
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
 }
 
 .ideologyReading{
@@ -67,6 +74,8 @@ h6 {
 	            $("#sidebarReading").mCustomScrollbar();
 	        });
     	})(jQuery);
+    	
+    	
     </g:javascript>
     
     <g:javascript>
@@ -86,6 +95,7 @@ h6 {
 						<div class="ideologyReading" onclick="${ideology}()"><a href="#">${ideology.capitalize()}</a></div>
 			</g:each>
 		</div>
+		
 		<div id="focusReading">
 		
 		</div>

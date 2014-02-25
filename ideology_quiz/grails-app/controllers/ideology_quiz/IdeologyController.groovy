@@ -3,8 +3,26 @@ package ideology_quiz
 class IdeologyController {
 
     def index() { 
-		
 	}
+	
+	//modular question method determines which question it is
+	def questionPicker = {
+		def hello = "hello"
+		def model = [:]
+		
+		def myThing = []
+		def things = ['dig', 'dug', 'down']
+		for (thing in things){
+			myThing << thing
+		}
+		model.myThing = myThing
+		log.error(myThing)
+		log.error("hello")
+		log.error(model)
+		
+		render (view: "questionPicker", model: [model:model])
+	}
+	
 	
 	def q02 = {
 		

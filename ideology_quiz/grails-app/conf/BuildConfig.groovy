@@ -48,7 +48,11 @@ grails.project.dependency.resolution = {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.10.2"
         runtime ":resources:1.2"
-
+		
+		
+		runtime ":angularjs-resources:1.2.5"
+		
+		
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
