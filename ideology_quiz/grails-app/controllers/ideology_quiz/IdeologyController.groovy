@@ -1,5 +1,10 @@
 package ideology_quiz
 
+import com.ideo.model.UsrProfile
+import com.ideo.model.DimRuleMap
+import com.ideo.model.StmIdMap
+import com.ideo.model.StmIndicator
+
 class IdeologyController {
 
     def index() { 
@@ -11,16 +16,21 @@ class IdeologyController {
 		def model = [:]
 		
 		def myThing = []
-		def things = ['dig', 'dug', 'down']
-		for (thing in things){
-			myThing << thing
-		}
-		model.myThing = myThing
-		log.error(myThing)
-		log.error("hello")
-		log.error(model)
+//		def things = ['dig', 'dug', 'down']
+//		for (thing in things){
+//			myThing << thing
+//		}
+//		myThing << request.getParameter("radio").toLong()
+//		model.myThing = myThing
+//		log.error(myThing)
 		
-		render (view: "questionPicker", model: [model:model])
+		def nameTest = UsrProfile.executeQuery("select stmIndicator.stmIdMap.nameStatement from UsrProfile")
+		
+		model.nameTest = nameTest
+		
+		log.error(model.nameTest)
+		
+		render (view: "questionPicker", model:model)
 	}
 	
 	

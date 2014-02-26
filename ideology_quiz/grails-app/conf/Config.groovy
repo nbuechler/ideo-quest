@@ -29,6 +29,12 @@ grails.mime.types = [
     xml:           ['text/xml', 'application/xml']
 ]
 
+grails.plugin.reveng.packageName = 'com.ideo.model'
+grails.plugin.reveng.versionColumns = [other: 'nonstandard_version_name']
+grails.plugin.reveng.manyToManyTables = ['user_role']
+grails.plugin.reveng.manyToManyBelongsTos = ['user_role': 'role', 'author_books': 'book']
+
+
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
